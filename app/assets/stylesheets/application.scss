@@ -15,10 +15,27 @@
  */
 
 @import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 
 * {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.logo_name {
+  font-family: 'Pacifico', cursive;
+}
+
+.card-header {
+  font-weight: bold;
+  background-color: #dddddd;
+}
+
+.input-group-prepend {
+  background-color: #dddddd;
+}
+
+.btn-success {
+  background-color: #47763c;
 }
