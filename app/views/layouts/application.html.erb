@@ -4,7 +4,7 @@
     <title>BookShare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +12,25 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navber-expand-lg navbar-light">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li>
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+        </li>
+      <% else %>
+          <%= link_to 'ログイン', new_user_session_path %>
+      <% end %>
+      </nav>
+    </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>
