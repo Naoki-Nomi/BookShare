@@ -44,13 +44,49 @@
 .jumbotron-extend {
   background-image: image-url('top_image.jpg');
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
   height: 100vh;
   min-height: 300px;
   color: white;
+  position: relative;
 }
 
 .jumbotron-container {
   position: relative;
-  top: 30%;
+  top: 20%;
+  left: 5%;
+  transform: translateY(-50%);
 }
+
+.top_quote {
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  font-style: italic;
+}
+
+.card-header {
+  background-color: #47763c;
+}
+
+.instruction_title {
+  color: #47763c;
+}
+
+@media screen and (max-width : 480px){
+	.display-1 {
+		font-size: 60px;
+	}
+
+	.lead {
+	  font-size: 15px;
+	}
+
+	.top_quote {
+	  font-size: 12px;
+    position: absolute;
+    bottom: 100px;
+    right: 5px;
+  }
+}
+

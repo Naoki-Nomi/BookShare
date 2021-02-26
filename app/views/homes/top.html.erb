@@ -1,8 +1,137 @@
-<div class="jumbotron jumbotron-fluid jumbotron-extend">
-  <div class="container-fluid jumbotron-container">
-    <h1 class="display-4">BookShare</h1>
-    <p class="lead">BookShareは、読んだ本の考察や感想を共有したり、<br>
-                    自分自身の読書記録に活用することができます。
+<div class="jumbotron jumbotron-fluid jumbotron-extend contents">
+  <div class="jumbotron-container">
+    <span class="small ml-2">読んでシェアする、読書体験共有型のSNS</span>
+      <h1 class="display-1 lg">BookShare</h1>
+    <p class="ml-2 lead">BookShareは、読んだ本の考察や感想を共有したり、<br>
+                      自分自身の読書記録に活用することができます
     </p>
+  </div>
+  <div class="top_quote">
+    <p class="mb-1"> 僕は飛行機で世界一周もした。スペインの革命も調停した。<br>
+        北極点だって踏破した。でも君を前に、その一歩が踏み出せない。</p>
+    <p class="small">アイラ・ガーシュイン</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center">
+    <i class="fas fa-book fa-3x"></i>
+    <h1 class="font-weight-bold mt-3">- BookShareの背景 -</h1>
+  </div>
+
+  <div class="card-deck mt-5">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="card text-center border border-dark">
+          <div class="card-header text-white h3">
+            統合的な知の学習
+          </div>
+          <div class="card-body p-0 my-3">
+            <%= image_tag 'top_design1.jpg', size: "325x280" %>
+            <p class="card-text mt-2">情報で溢れる現代だからこそ、<br>
+                                 1冊の本を集中して読むことで、<br>
+                                 統合的な知見を学習できる</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card text-center border border-dark">
+          <div class="card-header text-white h3">
+            思考力の深化
+          </div>
+          <div class="card-body p-0 my-3">
+            <%= image_tag 'top_design2.jpg', size: "325x280" %>
+            <p class="card-text mt-2">自分の考えを言語化したり、<br>
+                                  他者の解釈を学んだりすることで、<br>
+                                  多面的な考え方を鍛えることができる
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card text-center border border-dark">
+          <div class="card-header text-white h3">
+            読書習慣の獲得
+          </div>
+          <div class="card-body p-0 my-3">
+            <%= image_tag 'top_design3.jpg', size: "325x280" %>
+            <p class="card-text mt-4">読み終わった本を記録にすることで、<br>
+                                  読書習慣を身につけることができる</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <i class="fab fa-leanpub fa-4x mt-5"></i>
+    <h1 class="font-weight-bold mt-3">- 使い方 -</h1>
+    <p class="small">※サービスのご利用には、<%= link_to '新規登録', new_user_registration_path %>が必要です。</p>
+  </div>
+
+  <div class="border border-dark">
+    <div class="h4 mt-4 ml-2 font-weight-bold instruction_title">◆ 読んだ本の感想や考察の共有</div>
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-3 text-center">
+          <h3>①</h3>
+          <h4>マイページ</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>まずはマイページから<br>
+             プロフィールを編集！</p>
+        </div>
+        <div class="col-3 text-center">
+          <h3>②</h3>
+          <h4>新規投稿</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>新規投稿をクリック</p>
+        </div>
+        <div class="col-3 text-center">
+          <h3>③</h3>
+          <h4>イラスト</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>読んだ本の感想や考察<br>
+             を記入にして投稿</p>
+        </div>
+        <div class="col-3 text-center">
+          <h3>④</h3>
+          <h4>イラスト</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>一覧に表示されます。<br>
+             投稿には、コメントができます！</p>
+        </div>
+      </div>
+    </div>
+    <div class="h4 mt-4 ml-2 font-weight-bold instruction_title">◆ お読みになった本を記録</div>
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-3 text-center">
+          <h3>①</h3>
+          <h4>読書登録</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>ヘッダーの読書登録より、<br>
+             読み終わった本を登録</p>
+        </div>
+        <div class="col-3 text-center">
+          <h3>②</h3>
+          <h4>読書記録</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>マイページの読書記録<br>
+             をクリック</p>
+        </div>
+        <div class="col-3 text-center">
+          <h3>③</h3>
+          <h4>イラスト</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>登録した読書一覧を確認</p>
+        </div>
+        <div class="col-3 text-center">
+          <h3>④</h3>
+          <h4>イラスト</h4>
+          <i class="fas fa-hand-point-up"></i>
+          <p>グラフから、読書傾向を<br>
+             視覚的に把握</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
