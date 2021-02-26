@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     sessions: 'admin/admins/sessions'
   }
 
+  namespace :admin do
+    resources :genres, only:[:index, :create, :edit, :update]
+  end
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',

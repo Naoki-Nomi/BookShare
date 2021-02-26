@@ -38,4 +38,19 @@
 
 .btn-success {
   background-color: #47763c;
+  border: 0;
+}
+
+.jumbotron-extend {
+  background-image: image-url('top_image.jpg');
+  background-size: cover;
+  background-position: top center;
+  height: 100vh;
+  min-height: 300px;
+  color: white;
+}
+
+.jumbotron-container {
+  position: relative;
+  top: 30%;
 }
