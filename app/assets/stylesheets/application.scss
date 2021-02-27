@@ -73,6 +73,10 @@
   color: #47763c;
 }
 
+.introduction {
+  word-break: break-word;
+}
+
 @media screen and (max-width : 480px){
 	.display-1 {
 		font-size: 60px;

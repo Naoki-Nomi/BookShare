@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="card mx-auto text-center col-12 col-md-10 col-lg-8 p-0 mt-5 shadow">
+      <h3 class="card-header-register py-1">
+        プロフィール編集
+      </h3>
+      <div class="card-body pt-0">
+        <%= form_with model: @user, url: user_path(@user), local:true do |f| %>
+          <div class="input-group input-group-lg mt-2 mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+            </div>
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control', placeholder: "ニックネーム" %>
+          </div>
+          <div class="input-group input-group-lg mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-pen"></i></span>
+            </div>
+              <%= f.text_area :introduction, autofocus: true, size: "20x5", class: 'form-control', placeholder: "自己紹介" %>
+          </div>
+              <%= attachment_image_tag @user, :profile_image, :fill, 250, 200, fallback: "no_image.jpg", size:'250x200', class: 'rounded-circle mt-3' %><br>
+              <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+              <%= f.submit "編集内容を保存", class: 'btn btn-success btn-block btn-lg border-0 mt-5' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-5 offset-lg-1 pr-0 text-center">
+      <%= attachment_image_tag @user, :profile_image, :fill, 300, 200, fallback: "no_image.jpg", size:'300x200', class: 'rounded-circle' %>
+      <p><%= @user.nickname %></p>
+      <table class="table table-sm table-borderless mx-auto col-lg-7">
+        <tr>
+          <td class="text-left", style="width:60%">フォロー数</td>
+          <td style="width:40%">〇〇</td>
+        </tr>
+        <tr>
+          <td class="text-left">フォロワー数</td>
+          <td>〇〇</td>
+        </tr>
+        <tr>
+          <td class="text-left">総登録読書数</td>
+          <td>〇〇</td>
+        </tr>
+        <tr>
+          <td class="text-left">総投稿数</td>
+          <td>〇〇</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-5 p-0 mt-2">
+      <ul class="list-group">
+        <li class="list-group-item border-0 pl-0"><%= link_to '① プロフィールを編集する', edit_user_path(current_user.id) %></li>
+        <li class="list-group-item border-0 pl-0">② 読書記録を確認する</li>
+        <li class="list-group-item border-0 pl-0">③ ご自身の投稿を確認する</li>
+        <li class="list-group-item border-0 pl-0"><%= link_to '④ 退会する',  user_confirm_path(current_user.id) %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-7 offset-lg-2 introduction">
+      <span><自己紹介></span>
+      <p class="border border-dark"><%= @user.introduction %></p>
+    </div>
+  </div>
+</div>
