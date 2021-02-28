@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto bg-primary my-5">
+      検索フィールド
+    </div>
+  </div>
+    <div class="col-lg-10 mx-auto border-top border-dark">
+      <% @post_books.each do |post_book| %>
+      <div class="row border-bottom border-dark">
+        <div class="col-md-3 text-center mt-3">
+          <%= attachment_image_tag post_book.user, :profile_image, :fill, 150, 100, fallback: "no_image.jpg", size:'150x100' %>
+          <p class="mb-0"><u><%= link_to post_book.user.nickname, user_path(post_book.user_id) %></u></p>
+        </div>
+        <div class="col-md-7 mt-2">
+          <h2 class="text-dark"><u><%= link_to post_book.title, post_book_path(post_book) %></u></h2>
+          <h5 class="mt-3">著者: <%= post_book.post_book_author %>題名: <%= post_book.post_book_title %></h5>
+          <p class="pt-3 mb-0">ジャンル: <%= post_book.genre.name %> コメント: <%= post_book.post_book_author %>
+          いいね: <%= post_book.post_book_author %></p>
+        </div>
+        <div class="col-md-2 px-0 d-flex align-items-end justify-content-end">
+          <p class="small mb-0">投稿日: <%= post_book.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+</div>

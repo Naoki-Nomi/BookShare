@@ -5,7 +5,7 @@
         新規投稿フォーム
       </h3>
       <div class="card-body pt-0">
-      <%= form_with model: @post_book, url: post_books_path(@post_book), local:true do |f| %>
+      <%= form_with model: @post_book, url: post_books_path, local:true do |f| %>
         <div class="row">
           <div class="col-lg-8">
             <%= f.attachment_field :post_book_image, placeholder: "投稿する本の画像", class: "mt-2" %>
