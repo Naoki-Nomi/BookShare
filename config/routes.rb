@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   get '/users/page/:id/confirm' => 'users#confirm', as: "user_confirm"
   patch '/users/page/:id/confirm' => 'users#quit', as: "user_quit"
-  resources :post_books
+  resources :post_books do
+    resources :comments, only: [:create, :destroy]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

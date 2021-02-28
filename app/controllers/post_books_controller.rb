@@ -18,6 +18,7 @@ class PostBooksController < ApplicationController
 
   def show
     @post_book = PostBook.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
