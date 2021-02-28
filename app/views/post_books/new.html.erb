@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="card mx-auto col-12 col-md-10 col-lg-8 p-0 mt-4 shadow">
+      <h3 class="card-header-register py-3 px-4">
+        新規投稿フォーム
+      </h3>
+      <div class="card-body pt-0">
+      <%= form_with model: @post_book, url: post_books_path(@post_book), local:true do |f| %>
+        <div class="row">
+          <div class="col-lg-8">
+            <%= f.attachment_field :post_book_image, placeholder: "投稿する本の画像", class: "mt-2" %>
+              <div class="input-group input-group-lg mt-2 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+                </div>
+                <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "投稿する本の著者" %>
+              </div>
+              <div class="input-group input-group-lg mt-2 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
+                </div>
+                <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "投稿する本のタイトル" %>
+              </div>
+            <div class="input-group input-group-lg mt-2 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-list"></i></span>
+              </div>
+              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control text-muted' } %>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <p class="small mt-lg-5 mb-1">※写真は任意です<span class="small">(下記は参考例)</span></p>
+            <%=image_tag "no_image_book.jpg", size:'180x130' %>
+          </div>
+        </div>
+        <div class="input-group input-group-lg mt-1 mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-heading"></i></span>
+          </div>
+          <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "タイトル" %>
+        </div>
+        <div class="input-group input-group-lg mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-pen"></i></span>
+          </div>
+            <%= f.text_area :introduction, autofocus: true, size: "20x8", class: 'form-control', placeholder: "投稿内容" %>
+        </div>
+            <%= f.submit "投稿", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
