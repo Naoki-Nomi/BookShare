@@ -17,15 +17,24 @@ class PostBooksController < ApplicationController
   end
 
   def show
+    @post_book = PostBook.find(params[:id])
   end
 
   def edit
+    @post_book = PostBook.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
+    post_book = PostBook.find(params[:id])
+    post_book.update(post_book_params)
+    redirect_to post_book_path(post_book)
   end
 
   def destroy
+    @post_book = PostBook.find(params[:id])
+    @post_book.delete
+    redirect_to post_books_path
   end
 
   private

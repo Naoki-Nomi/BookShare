@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="row">
+        <div class="col-5 mx-auto mt-5">
+          <%= attachment_image_tag @post_book, :post_book_image, :fill, 300, 250, fallback: "no_image_book.jpg", size:'280x250' %>
+          <h5 class="mt-3">著者: <%= @post_book.post_book_author %></h5>
+          <h5>タイトル: <%= @post_book.post_book_title %></h5>
+        </div>
+        <div class="col-7 mx-auto mt-5 p-0">
+          <div class="text-right">
+            <% if @post_book.user == current_user %>
+              <%= link_to "編集する", edit_post_book_path(@post_book), class: 'btn btn-success btn-sm' %>
+              <%= link_to "削除する", post_book_path(@post_book), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 p-0">
+              <%= attachment_image_tag @post_book.user, :profile_image, :fill, 100, 80, fallback: "no_image_book.jpg", size:'150x100', class: 'rounded-circle' %>
+            </div>
+            <div class="col-lg-8 p-0 mt-3">
+              <h4><%= @post_book.created_at.strftime('%Y/%m/%d') %></h4>
+              <h4 class="mt-3"><u><%= link_to @post_book.user.nickname, user_path(@post_book.user_id) %></u></h4>
+            </div>
+          </div>
+          <h3 class="text-center mt-5"><%= @post_book.title %></h3>
+          <p class="mt-5 ml-3"><%= @post_book.genre.name %><%= @post_book.post_book_author %><%= @post_book.post_book_author %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 border mt-3">
+          <%= @post_book.content %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

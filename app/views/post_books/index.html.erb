@@ -8,7 +8,7 @@
       <% @post_books.each do |post_book| %>
       <div class="row border-bottom border-dark">
         <div class="col-md-3 text-center mt-3">
-          <%= attachment_image_tag post_book.user, :profile_image, :fill, 150, 100, fallback: "no_image.jpg", size:'150x100' %>
+          <%= attachment_image_tag post_book.user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'150x100', class: 'rounded-circle' %>
           <p class="mb-0"><u><%= link_to post_book.user.nickname, user_path(post_book.user_id) %></u></p>
         </div>
         <div class="col-md-7 mt-2">
