@@ -14,8 +14,8 @@
         <div class="col-md-7 mt-2">
           <h2 class="text-dark"><u><%= link_to post_book.title, post_book_path(post_book) %></u></h2>
           <h5 class="mt-3">著者: <%= post_book.post_book_author %>題名: <%= post_book.post_book_title %></h5>
-          <p class="pt-3 mb-0">ジャンル: <%= post_book.genre.name %> コメント: <%= post_book.post_book_author %>
-          いいね: <%= post_book.post_book_author %></p>
+          <p class="pt-3 mb-0">ジャンル: <%= post_book.genre.name %> コメント: <%= post_book.comments.count %>
+          いいね: <%= post_book.favorites.count %></p>
         </div>
         <div class="col-md-2 px-0 d-flex align-items-end justify-content-end">
           <p class="small mb-0">投稿日: <%= post_book.created_at.strftime('%Y/%m/%d') %></p>
