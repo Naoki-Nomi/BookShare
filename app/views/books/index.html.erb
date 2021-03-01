@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto bg-primary my-5">
+      検索フィールド
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td></td>
+        <td>本の著者</td>
+        <td>本のタイトル</td>
+        <td>本のジャンル</td>
+        <td>読み終わった日付</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td><%= attachment_image_tag book.user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'150x100', class: 'rounded-circle' %>
+            <%= book.user.nickname %>
+        </td>
+        <td><%= link_to book.author, book_path(book) %></td>
+        <td><%= book.book_title %></td>
+        <td><%= book.genre.name %></td>
+        <td><%= book.read_date %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

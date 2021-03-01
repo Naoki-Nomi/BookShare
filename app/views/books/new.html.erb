@@ -18,33 +18,29 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
               </div>
-              <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "本のタイトル" %>
+              <%= f.text_field :book_title, autofocus: true, class: 'form-control', placeholder: "本のタイトル" %>
             </div>
             <div class="input-group input-group-lg mt-2 mb-2">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-list"></i></span>
               </div>
-              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control text-muted' } %>
+              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "本のジャンル" }, { class: 'form-control text-muted' } %>
+            </div>
+             <div class="input-group input-group-lg mt-1 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-table"></i></span>
+              </div>
+              <%= f.date_field :read_date, autofocus: true, class: 'form-control', placeholder: "読み終わった日を入力" %>
             </div>
           </div>
-          <div class="col-lg-4">
-            <p class="small mt-lg-5 mb-1">※写真は任意です<span class="small">(下記は参考例)</span></p>
-            <%=image_tag "no_image_book.jpg", size:'180x130' %>
-          </div>
-        </div>
-        <div class="input-group input-group-lg mt-1 mb-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-heading"></i></span>
-          </div>
-          <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "タイトル" %>
         </div>
         <div class="input-group input-group-lg mb-2">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-pen"></i></span>
           </div>
-            <%= f.text_area :content, autofocus: true, size: "20x8", class: 'form-control', placeholder: "投稿内容" %>
+            <%= f.text_area :note, autofocus: true, size: "20x5", class: 'form-control', placeholder: "登録する本のメモ" %>
         </div>
-            <%= f.submit "投稿", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
+            <%= f.submit "登録する", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
       <% end %>
       </div>
     </div>
