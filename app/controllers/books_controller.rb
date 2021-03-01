@@ -13,7 +13,12 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.where(user_id: current_user.id)
+
+    if params[:book_sort] == "0"
+      @books = Book.where(user_id: params[:user_id])
+    else
+      @books = Book.where(user_id: current_user.id)
+    end
   end
 
   def show
