@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 text-center mt-3">
+      <h6>2021年の読書数</h6>
+      <%= line_chart @books.group_by_month(:read_date).count, xmin: "2021-01-01", xmax: "2021-03-01", width: "300px", height: "400px", curve: false, messages: {empty: "No data"} %>
+    </div>
+    <div class="col-lg-4 text-center mt-3">
+      <h6>よくお読みになっている<br>著者ベスト5</h6>
+      <%= bar_chart @author_for_graph, width: "300px", height: "400px", messages: {empty: "No data"}, library: { pieSliceText: 'value' }  %>
+    </div>
+    <div class="col-lg-4 text-center mt-3">
+      <h6>お読みになっているジャンル</h6>
+      <%= pie_chart @genre_for_graph, width: "300px", height: "400px", legend: "bottom", messages: {empty: "No data"} %>
+    </div>
+  </div>
+</div>

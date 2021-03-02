@@ -71,3 +71,6 @@ gem "refile-mini_magick"
 gem 'devise'
 
 gem 'pry-byebug'
+
+gem 'chartkick'
+gem 'groupdate'

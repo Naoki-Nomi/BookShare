@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
+  get '/books/detail' => 'books#detail', as: "detail"
   resources :books
-  get '/books/:id/detail' => 'books#detail', as: "book_detail"
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
