@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto bg-primary my-5">
+      検索フィールド
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td></td>
+        <td>ニックネーム</td>
+        <td>投稿数</td>
+        <td>登録書籍数</td>
+        <td>フォロー数</td>
+        <td>フォロワー数</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'150x100', class: 'rounded-circle' %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.post_books.count %></td>
+        <td><%= user.books.count %></td>
+        <td><%= user.follower.count %></td>
+        <td><%= user.followed.count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

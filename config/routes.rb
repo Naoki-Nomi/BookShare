@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
+
   get '/users/page/:id/confirm' => 'users#confirm', as: "user_confirm"
   patch '/users/page/:id/confirm' => 'users#quit', as: "user_quit"
   resources :post_books do
@@ -24,5 +25,9 @@ Rails.application.routes.draw do
   end
   resources :books
   get '/books/:id/detail' => 'books#detail', as: "book_detail"
+
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  get 'users/page/:id/relationships' => 'relationships#index', as: 'relationship'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

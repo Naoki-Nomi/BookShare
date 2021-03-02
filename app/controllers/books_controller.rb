@@ -13,7 +13,6 @@ class BooksController < ApplicationController
   end
 
   def index
-
     if params[:book_sort] == "0"
       @books = Book.where(user_id: params[:user_id])
     else
@@ -27,6 +26,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @genres = Genre.all
   end
 
   def update

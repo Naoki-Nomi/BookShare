@@ -6,19 +6,19 @@
       <table class="table table-sm table-borderless mx-auto col-lg-7">
         <tr>
           <td class="text-left", style="width:60%">フォロー数</td>
-          <td style="width:40%">〇〇</td>
+          <td style="width:40%"><%= link_to @user.follower.count, relationship_path(id: @user, relationship_order: 0) %></td>
         </tr>
         <tr>
           <td class="text-left">フォロワー数</td>
-          <td>〇〇</td>
+          <td><%= link_to @user.followed.count, relationship_path(id: @user, relationship_order: 1) %></td>
         </tr>
         <tr>
           <td class="text-left">総登録読書数</td>
-          <td>〇〇</td>
+          <td><%= link_to @user.books.count, books_path %></td>
         </tr>
         <tr>
           <td class="text-left">総投稿数</td>
-          <td>〇〇</td>
+          <td><%= link_to @user.post_books.count, post_books_path %></td>
         </tr>
       </table>
     </div>
@@ -29,6 +29,13 @@
         <li class="list-group-item border-0 pl-0">③ ご自身の投稿を確認する</li>
         <li class="list-group-item border-0 pl-0"><%= link_to '④ 退会する',  user_confirm_path(current_user.id) %></li>
       </ul>
+      <% unless @user == current_user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to "フォロー外す", unfollow_path(@user), method: :delete %>
+        <% else %>
+          <%= link_to "フォローする", follow_path(@user), method: :post %>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="row">
