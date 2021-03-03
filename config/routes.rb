@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :create, :edit, :update]
     root to: 'homes#top'
     resources :users, only:[:edit, :update]
-    resources :post_books, only:[:index, :show, :destroy]
+    resources :post_books, only:[:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
 

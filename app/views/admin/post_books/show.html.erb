@@ -41,9 +41,7 @@
                   <%= comment.created_at.strftime('%Y/%m/%d') %>
                 </div>
                 <div class="col-4 offset-lg-5 mr-0 text-right">
-                  <% if comment.user == current_user %>
-                    <%= link_to '削除する', post_book_comment_path(@post_book, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
-                  <% end %>
+                  <%= link_to '削除する', admin_post_book_comment_path(@post_book, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
                 </div>
               </div>
               <%= comment.comment_content %>

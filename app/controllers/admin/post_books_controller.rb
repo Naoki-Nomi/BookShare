@@ -12,8 +12,6 @@ class Admin::PostBooksController < ApplicationController
     post_book = PostBook.find(params[:id])
     post_book.destroy
     redirect_to admin_post_books_path
-    
-    
   end
 
 end
