@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  enum is_deleted: { 有効: false, 退会済み: true }
+
   has_many :post_books, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

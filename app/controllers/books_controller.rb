@@ -44,15 +44,24 @@ class BooksController < ApplicationController
   end
 
   def detail
-    if params[:book_sort] == "0"
-      @books = Book.where(user_id: params[:user_id])
+    @books = Book.where(user_id: params[:user_id])
+
+    # @read_date_for_graph = @books.group(:read_date).count
+    @genre_for_graph = @books.joins(:genre).group("genres.name").count
+
+    if params[:period] == "0"
+      @books_number = @books.group_by_year(:read_date).count
     else
-      @books = Book.where(user_id: current_user.id)
+      @books_number = @books.group_by_month(:read_date).count
     end
 
-    @read_date_for_graph = @books.group(:read_date).count
-    @author_for_graph = @books.group(:author).order('count_all DESC').limit(5).count
-    @genre_for_graph = @books.joins(:genre).group("genres.name").count
+    if params[:author_number]
+        author_number = nil
+    else
+        author_number = "5"
+    end
+
+    @author_for_graph = @books.group(:author).order('count_all DESC').limit(author_number).count
 
   end
 

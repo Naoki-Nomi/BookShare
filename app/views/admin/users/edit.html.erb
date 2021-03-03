@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="card mx-auto text-center col-10 col-md-6 col-lg-5 p-0 mt-5 shadow">
+      <h4 class="card-header-register py-1">
+        ユーザー編集
+      </h4>
+      <div class="card-body pt-1">
+        <%= form_with model: @user, url: admin_user_path(@user), local:true do |f| %>
+          <div class="row form-group d-flex align-items-center mx-auto">
+            <label class="col-lg-4">会員ステータス</label>
+            <div class"col-lg-8">
+              <%= f.radio_button :is_deleted, :有効 %>
+              <%= f.label :payment_method, "有効" %>
+              <%= f.radio_button :is_deleted, :退会済み %>
+              <%= f.label :payment_method, "退会済み" %>
+            </div>
+          </div>
+              <%= f.submit "編集内容を保存", class: 'btn btn-success btn-block border-0' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

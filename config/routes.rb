@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only:[:index, :create, :edit, :update]
+    root to: 'homes#top'
+    resources :users, only:[:edit, :update]
   end
+
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  get '/books/detail' => 'books#detail', as: "detail"
+  get '/book/:user_id/detail' => 'books#detail', as: "detail"
   resources :books
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
