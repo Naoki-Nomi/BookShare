@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
     favorite.user_id = current_user.id
     favorite.post_book_id = post_book.id
     favorite.save
+    post_book.create_notification_favorite(current_user)
     redirect_to  post_book_path(post_book)
   end
 

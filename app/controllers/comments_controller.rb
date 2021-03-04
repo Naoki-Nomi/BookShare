@@ -5,7 +5,9 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     comment.post_book_id = post_book.id
     comment.user_id = current_user.id
-    comment.save
+    if comment.save
+      post_book.create_notification_comment(current_user, comment.id)
+    end
     redirect_to post_book_path(post_book)
   end
 

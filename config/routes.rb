@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:show, :edit, :update]
+  resources :notifications, only: [:index]
+  delete '/notifications' => 'notifications#destroy_all', as: "destroy_all_notification"
 
   get '/users/page/:id/confirm' => 'users#confirm', as: "user_confirm"
   patch '/users/page/:id/confirm' => 'users#quit', as: "user_quit"
