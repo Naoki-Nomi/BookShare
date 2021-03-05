@@ -1,7 +1,9 @@
 class Admin::PostBooksController < ApplicationController
 
   def index
-    @post_books = PostBook.all
+    @search = PostBook.ransack(params[:q])
+    @post_books = @search.result
+    @genres = Genre.all
   end
 
   def show

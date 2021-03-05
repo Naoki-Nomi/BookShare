@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto bg-primary my-5">
-      検索フィールド
+    <div class="col-6 mx-auto my-5">
+      <%= search_form_for @search, url: admin_post_books_path do |f| %>
+        <%= f.search_field :title_or_post_book_author_or_post_book_title_cont_any, placeholder: '投稿を検索' %>
+        <%= f.collection_select :genre_id_eq, @genres, :id, :name, :include_blank => '指定なし', class: "form-control form-custom" %>
+        <%= f.date_field :created_at_gteq, include_blank: true, class: 'form-control' %>
+        <%= f.date_field :created_at_lteq_end_of_day, include_blank: true, class: 'form-control'  %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class='fas fa-search'></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
     <div class="col-lg-10 mx-auto border-top border-dark">

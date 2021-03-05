@@ -3,7 +3,7 @@
     <div class="col-6 mx-auto my-5">
       <%= search_form_for @search, url: admin_root_path do |f| %>
         <%= f.search_field :nickname_or_email_cont_any, placeholder: 'ニックネームまたはemailで検索' %>
-        <%= f.select :is_deleted, [['有効', '有効'], ['退会済み', '退会済み']] %>
+        <%= f.select :is_deleted_eq, [['有効', false], ['退会済み', true]], { include_blank: "指定なし" }, { class: "form-control" }  %>
         <%= f.button :type => "submit", style: 'border-style: none;' do %>
           <i class='fas fa-search'></i>
         <% end %>
