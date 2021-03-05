@@ -30,9 +30,12 @@ Rails.application.routes.draw do
   resources :post_books do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    get :search, on: :collection
   end
   get '/book/:user_id/detail' => 'books#detail', as: "detail"
-  resources :books
+  resources :books do
+    get :search, on: :collection
+  end
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'

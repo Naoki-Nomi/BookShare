@@ -1,7 +1,8 @@
 class Admin::HomesController < ApplicationController
 
   def top
-    @users = User.all
+    @search = User.ransack(params[:q])
+    @users = @search.result
   end
 
 end

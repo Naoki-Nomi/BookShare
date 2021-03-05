@@ -13,13 +13,17 @@ class BooksController < ApplicationController
   end
 
   def index
+    @genres = Genre.all
     if params[:book_sort] == "0"
       @books = Book.where(user_id: params[:user_id])
-      @user_id = @books.pluck(:user_id).first
     else
       @books = Book.where(user_id: current_user.id)
-      @user_id = @books.pluck(:user_id).first
     end
+  end
+
+  def search
+    @genres = Genre.all
+    @books = Book.search(params[:user_id], params[:search], params[:genre_id], params[:read_from], params[:read_to])
   end
 
   def show

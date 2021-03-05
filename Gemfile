@@ -74,3 +74,5 @@ gem 'pry-byebug'
 
 gem 'chartkick'
 gem 'groupdate'
+
+gem 'ransack'

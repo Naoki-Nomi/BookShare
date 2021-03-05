@@ -13,7 +13,18 @@ class PostBooksController < ApplicationController
   end
 
   def index
-    @post_books = PostBook.all
+    @genres = Genre.all
+
+    if params[:book_sort] == "0"
+      @post_books = PostBook.where(user_id: params[:user_id])
+    else
+      @post_books = PostBook.all
+    end
+  end
+
+  def search
+    @genres = Genre.all
+    @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id])
   end
 
   def show
