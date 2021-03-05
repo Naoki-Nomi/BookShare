@@ -42,11 +42,12 @@ class PostBook < ApplicationRecord
     notification.save
   end
 
-  def self.search(user_id, search, genre_id)
+  def self.search(user_id, search, genre_id, from, to)
       post_book = PostBook
       post_book = post_book.where(user_id: user_id) if user_id.present?
       post_book = post_book.where("title LIKE? OR post_book_author LIKE? OR post_book_title LIKE?", "%#{search}%", "%#{search}%", "%#{search}%") if search.present?
       post_book = post_book.where(genre_id: genre_id) if genre_id.present?
+      post_book = post_book.where(created_at: from..to) if from.present? and to.present?
       post_book
   end
 

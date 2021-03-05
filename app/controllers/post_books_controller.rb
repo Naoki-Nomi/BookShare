@@ -24,7 +24,7 @@ class PostBooksController < ApplicationController
 
   def search
     @genres = Genre.all
-    @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id])
+    @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id], params[:post_from], params[:post_to])
   end
 
   def show
