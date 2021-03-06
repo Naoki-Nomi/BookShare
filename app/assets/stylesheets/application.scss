@@ -20,11 +20,23 @@
 
 
 * {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+a {
+  color: #0066c0;
+}
+
+li {
+  list-style: none;
 }
 
 .logo_name {
   font-family: 'Pacifico', cursive;
+}
+
+.login-msg {
+  font-style: italic;
 }
 
 .card-header-register {
@@ -49,6 +61,7 @@
   min-height: 300px;
   color: white;
   position: relative;
+  overflow: hidden;
 }
 
 .jumbotron-container {

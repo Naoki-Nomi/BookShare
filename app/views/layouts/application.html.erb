@@ -6,15 +6,14 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm mt-0">
+    <header class="shadow-sm fixed-top bg-light">
       <nav class="navbar navbar-expand-lg navbar-light p-0">
         <div class="container-fluid m-0">
           <a class="navbar-brand p-3" href="/">
@@ -25,33 +24,33 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto font-weight-bold">
             <% if user_signed_in? %>
-                <label>ようこそ、<%= current_user.nickname %>さん！</label>
-                <li class="nav-item"><%= link_to '新規投稿', new_post_book_path, class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to '読書登録', new_book_path, class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to '投稿一覧', post_books_path, class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+                <span class="d-flex align-items-center mr-3 login-msg">ようこそ、<%= current_user.nickname %>さん！</span>
+                <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to '新規投稿', new_post_book_path, class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to '読書登録', new_book_path, class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to '投稿一覧', post_books_path, class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark mx-2' %></li>
             <% elsif admin_signed_in? %>
-                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to '会員一覧', admin_root_path, class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to '投稿一覧', admin_post_books_path, class: 'nav-link text-dark', class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+                <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to '会員一覧', admin_root_path, class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to '投稿一覧', admin_post_books_path, class: 'nav-link text-dark', class: 'nav-link text-dark mx-2' %></li>
+                <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mx-2' %></li>
               <% else %>
-                  <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %></li>
-                  <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %></li>
+                  <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark mx-2' %></li>
+                  <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark mx-2' %></li>
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
+    <main class="mb-auto mt-5">
     <%= yield %>
     </main>
     <footer>
-      <p class="fotter-text text-center py-2 mt-5 mb-0">Copyright © BookShare</p>
+      <p class="fotter-text text-center py-2 mt-5 mb-0 font-weight-bold">Copyright © BookShare</p>
     </footer>
   </body>
 </html>
