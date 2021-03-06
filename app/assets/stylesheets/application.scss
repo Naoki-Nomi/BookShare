@@ -102,6 +102,23 @@ li {
   background-color: #dddddd;
 }
 
+#error_explanation {
+    border: 2px solid red;
+}
+
+#error_explanation > ul > li {
+    list-style-type: disc;
+}
+
+#error_explanation h2 {
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    background-color: #c00;
+    color: #fff;
+}
+
 @media screen and (max-width : 480px){
 	.display-1 {
 		font-size: 60px;
@@ -118,4 +135,9 @@ li {
     right: 5px;
   }
 }
+
+  #error_explanation {
+    border: 2px solid red;
+    font-size: 10px;
+  }
 
