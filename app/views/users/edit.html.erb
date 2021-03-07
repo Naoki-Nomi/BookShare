@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="card mx-auto text-center col-12 col-md-10 col-lg-8 p-0 mt-5 shadow">
+    <div class="card mx-auto text-center col-11 col-md-10 col-lg-8 p-0 shadow">
       <h3 class="card-header-register py-1">
         プロフィール編集
       </h3>
@@ -18,9 +18,9 @@
             </div>
               <%= f.text_area :introduction, autofocus: true, size: "20x5", class: 'form-control', placeholder: "自己紹介" %>
           </div>
-              <%= attachment_image_tag @user, :profile_image, :fill, 180, 150, fallback: "no_image.jpg", size:'250x200', class: 'rounded-circle mt-3' %><br>
+              <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", size: '200x150' %><br>
               <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-              <%= f.submit "編集内容を保存", class: 'btn btn-success btn-block btn-lg border-0 mt-5' %>
+              <%= f.submit "編集内容を保存", class: 'btn btn-success btn-block btn-lg border-0 mt-4' %>
         <% end %>
       </div>
     </div>
