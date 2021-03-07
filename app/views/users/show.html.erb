@@ -1,8 +1,21 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col text-center mupage-image">
-      <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback: "no_image.png", class: 'rounded' %>
-      <p><%= @user.nickname %></p>
+      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", size: "180x150"  %>
+      <p class="mb-0"><%= @user.nickname %></p>
+      <p>
+        <% unless @user == current_user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to unfollow_path(@user), method: :delete do %>
+              <i class="fas fa-star"></i> フォローを外す
+            <% end %>
+          <% else %>
+            <%= link_to follow_path(@user), method: :post do %>
+              <i class="far fa-star"></i> フォローする
+            <% end %>
+          <% end %>
+        <% end %>
+      </p>
     </div>
   </div>
   <div class="row">
@@ -53,17 +66,18 @@
               <% end %>
             </li>
           <% else %>
-            <li class="list-group-item border-0 py-1"><%= link_to '◆ 〇〇さんの読書記録を確認する', books_path(user_id: @user.id, book_sort: 0)%></li>
-            <li class="list-group-item border-0 py-1"><%= link_to '◆ 〇〇さんの投稿一覧を確認する', post_books_path(user_id: @user.id, book_sort: 0) %></li>
+            <li class="list-group-item border-0 py-1">
+              <%= link_to post_books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' do %>
+                <i class="fas fa-share-square"></i> <%= @user.nickname %>さんの投稿一覧を閲覧する
+              <% end %>
+            </li>
+            <li class="list-group-item border-0 py-1">
+              <%= link_to books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' do %>
+                <i class="fas fa-book-open"></i> <%= @user.nickname %>さんの読書記録を閲覧する
+              <% end %>
+            </li>
           <% end %>
           </ul>
-          <% unless @user == current_user %>
-            <% if current_user.following?(@user) %>
-              <%= link_to "フォロー外す", unfollow_path(@user), method: :delete %>
-            <% else %>
-              <%= link_to "フォローする", follow_path(@user), method: :post %>
-            <% end %>
-          <% end %>
         </div>
       </div>
     </div>
