@@ -77,3 +77,5 @@ gem 'chartkick'
 gem 'groupdate'
 
 gem 'ransack'
+
+gem 'kaminari','~> 1.2.1'

@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-11 col-md-8 mx-auto">
       <div class="row">
-        <div class="col-5 mx-auto mt-5">
-          <%= attachment_image_tag @post_book, :post_book_image, :fill, 250, 250, fallback: "no_image_book.jpg", size:'280x250' %>
-          <h5 class="mt-3">著者: <%= @post_book.post_book_author %></h5>
-          <h5>タイトル: <%= @post_book.post_book_title %></h5>
+        <div class="col-12 col-lg-3 mx-auto px-0 mt-4">
+          <%= attachment_image_tag @post_book, :post_book_image, fallback: "no_image_book.jpg", size:'145x115' %>
+          <p class="mt-3 mb-0"><%= @post_book.post_book_author %></p>
+          <p>『<%= @post_book.post_book_title %>』</p>
         </div>
-        <div class="col-7 mx-auto mt-5 p-0">
+        <div class="col-12 col-lg-9 mx-auto p-0">
           <div class="text-right">
             <% if @post_book.user == current_user %>
               <%= link_to "編集する", edit_post_book_path(@post_book), class: 'btn btn-sm btn-success' %>
@@ -15,63 +15,76 @@
             <% end %>
           </div>
           <div class="row">
-            <div class="col-lg-4 p-0">
-              <%= attachment_image_tag @post_book.user, :profile_image, :fill, 60, 60, fallback: "no_image_book.jpg", size:'120x100', class: 'rounded-circle' %>
+            <div class="col-md-3 col-lg-2 p-0 text-center mt-3">
+              <%= link_to user_path(@post_book.user_id) do %>
+                <%= attachment_image_tag @post_book.user, :profile_image, fallback: "no_image.png", size:'100x70' %>
+                <p class="text-dark"><%= @post_book.user.nickname %></p>
+              <% end %>
             </div>
-            <div class="col-lg-8 p-0 mt-3">
-              <h4><%= @post_book.created_at.strftime('%Y/%m/%d') %></h4>
-              <h4 class="mt-3"><u><%= link_to @post_book.user.nickname, user_path(@post_book.user_id) %></u></h4>
+            <div class="col-md-9 col-lg-10 p-0">
+              <p class="small text-right mr-3 mb-md-0"><%= @post_book.created_at.strftime('%Y/%m/%d') %></p>
+              <h3 class="text-center font-weight-bold mr-lg-5 mt-lg-2"><%= @post_book.title %></h3>
             </div>
           </div>
-          <h3 class="text-center mt-5"><%= @post_book.title %></h3>
-          <p class="mt-5 ml-3">ジャンル名:<%= @post_book.genre.name %> コメント件数:<%= @post_book.comments.count %></p>
-          <% if @post_book.favorited_by?(current_user) %>
-            <%= link_to post_book_favorites_path(@post_book), method: :delete do %>
-              <i class="fas fa-thumbs-up"></i><%= @post_book.favorites.count %>いいね
+          <p class="mt-3 mt-md-0 ml-3 mb-0 text-right">
+            <span class="border mx-2"><%= @post_book.genre.name %></span>
+            <i class="fas fa-comments"></i>: <%= @post_book.comments.count %>
+            <i class="fas fa-thumbs-up"></i>: <%= @post_book.favorites.count %>
+          </p>
+          <p class="text-right">
+            <% if @post_book.favorited_by?(current_user) %>
+              <%= link_to post_book_favorites_path(@post_book), method: :delete do %>
+                <i class="fas fa-thumbs-up"></i>いいね取り消す
+              <% end %>
+            <% else %>
+              <%= link_to post_book_favorites_path(@post_book), method: :post do %>
+                <i class="far fa-thumbs-up"></i>いいねする
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to post_book_favorites_path(@post_book), method: :post do %>
-              <i class="far fa-thumbs-up"></i><%= @post_book.favorites.count %>いいね
-            <% end %>
-          <% end %>
+          </p>
         </div>
       </div>
       <div class="row">
-        <div class="col-12 border mt-3 mx-auto">
+        <span><投稿内容></span>
+        <div class="col-12 border">
           <%= @post_book.content %>
         </div>
       </div>
       <div class="row">
-        <% @post_book.comments.each do |comment| %>
-        <div class="col-12 border mt-3">
-          <div class="row">
-            <div class="col-2 text-center pr-0">
-              <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image_book.jpg", size:'120x100', class: 'rounded-circle' %>
-              <p><%= comment.user.nickname %></p>
-            </div>
-            <div class="col-10">
-              <div class="row">
-                <div class="col-3">
-                  <%= comment.created_at.strftime('%Y/%m/%d') %>
-                </div>
-                <div class="col-4 offset-lg-5 mr-0 text-right">
-                  <% if comment.user == current_user %>
-                    <%= link_to '削除する', post_book_comment_path(@post_book, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
-                  <% end %>
-                </div>
-              </div>
+        <table class="table mt-5">
+          <% @post_book.comments.each do |comment| %>
+          <tr class="border-bottom">
+            <td class="text-center p-0", style="width:20%">
+              <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image_book.jpg", size:'100x70', class: 'pb-comment-image' %><br>
+              <%= comment.user.nickname %>
+            </td>
+            <td class="p-0 pt-1", style="width:65%">
               <%= comment.comment_content %>
-            </div>
-          </div>
+            </td>
+            <td class="p-0", style="width:15%">
+              <span class="small text-right d-block align-items-end"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+              <% if comment.user == current_user %>
+                <div class="text-right"><%= link_to '削除する', post_book_comment_path(@post_book, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'text-danger' %></div>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <span class="alert">
+        <% if @comment.errors.any? %>
+          <%= @comment.errors.count %>件のエラーが発生しました
+          <% @comment.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+      </span>
+        <div class="form-group mt-3">
+          <%= form_with(model:[@post_book, @comment], local:true) do |f| %>
+            <%= f.text_area :comment_content, autofocus: true, size: "20x5", placeholder: "コメントを入力", class: 'form-control' %>
+            <%= f.submit "コメントを投稿する", class: 'btn btn-success mt-2 float-right' %>
+          <% end %>
         </div>
-        <% end %>
-      </div>
-      <div class="form-group mt-3">
-        <%= form_with(model:[@post_book, @comment], local:true) do |f| %>
-          <%= f.text_area :comment_content, autofocus: true, size: "20x5", placeholder: "コメントを入力", class: 'form-control' %>
-          <%= f.submit "コメントを投稿する", class: 'btn btn-success mt-2 float-right' %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

@@ -5,10 +5,14 @@ class PostBook < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
   has_many :notifications, dependent: :destroy
 
   attachment :post_book_image
+
+  validates :post_book_author, presence: true, length: { maximum: 30}
+  validates :post_book_title, presence: true, length: { maximum: 40}
+  validates :title, presence: true, length: { maximum: 40}
+  validates :content, presence: true, length: { maximum: 1200}
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -42,6 +46,7 @@ class PostBook < ApplicationRecord
     notification.save
   end
 
+  #検索時の処理（ユーザーIDはユーザーが投稿した投稿に限定する際に使用）
   def self.search(user_id, search, genre_id, from, to)
       post_book = PostBook
       post_book = post_book.where(user_id: user_id) if user_id.present?

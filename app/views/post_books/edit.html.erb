@@ -1,6 +1,14 @@
-<div class="container">
+<div class="container mt-5">
+  <span class="alert">
+    <% if @post_book.errors.any? %>
+      <%= @post_book.errors.count %>件のエラーが発生しました
+      <% @post_book.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+  </span>
   <div class="row">
-    <div class="card mx-auto col-12 col-md-10 col-lg-8 p-0 mt-4 shadow">
+    <div class="card mx-auto col-11 col-md-10 col-lg-8 p-0 shadow">
       <h3 class="card-header-register py-3 px-4">
         投稿編集フォーム
       </h3>
@@ -25,10 +33,10 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-list"></i></span>
               </div>
-              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control text-muted' } %>
+              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control' } %>
             </div>
           </div>
-          <div class="col-lg-4 mt-lg-5">
+          <div class="col-lg-4 mt-lg-5 d-none d-lg-block">
             <%= attachment_image_tag @post_book, :post_book_image, :fill, 180, 130, fallback: "no_image_book.jpg", size:'180x130' %>
           </div>
         </div>

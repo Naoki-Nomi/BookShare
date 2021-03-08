@@ -8,4 +8,20 @@
 Admin.find_or_create_by(id: 1) do |admin|
  admin.email = "sample@sample.com"
  admin.password = "samplesample"
+
+
+
+ PostBook.create!(
+ [
+  {
+   user_id: 6,
+   genre_id: 3,
+   title: "マーケティング",
+   content: "この本では、マーケティングのための調査体型を1から教えてくれます。",
+   post_book_title: "マーケティングリサーチ",
+   post_book_author: "上田拓治",
+   post_book_image_id: nil
+   }
+ ]
+ )
 end
