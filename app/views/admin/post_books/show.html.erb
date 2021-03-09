@@ -10,7 +10,7 @@
         <div class="col-7 mx-auto mt-5 p-0">
           <div class="row">
             <div class="col-lg-4 p-0">
-              <%= attachment_image_tag @post_book.user, :profile_image, :fill, 60, 60, fallback: "no_image_book.jpg", size:'120x100', class: 'rounded-circle' %>
+              <%= attachment_image_tag @post_book.user, :profile_image, :fill, 60, 60, fallback: "no_image_book.jpg", size:'120x100' %>
             </div>
             <div class="col-lg-8 p-0 mt-3">
               <h4><%= @post_book.created_at.strftime('%Y/%m/%d') %></h4>

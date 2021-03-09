@@ -2,10 +2,16 @@ ja:
   activerecord:
     models:
       post_book: 投稿
+      book: 読書登録
     attributes:
       post_book:
         post_book_author: 著者名
         post_book_title: 本の題名
         title: タイトル
         content: 投稿内容
+        genre: ジャンル名
+      book:
+        author: 著者名
+        book_title: 本の題名
+        read_date: 読み終わった日付
         genre: ジャンル名

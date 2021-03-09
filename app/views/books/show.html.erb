@@ -1,21 +1,31 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-lg-10 mx-auto">
-      <table class="table table-hover">
+    <div class="col-12 col-md-11 col-lg-8 mx-auto">
+      <div class="row">
+        <div class="ml-auto">
+          <%= link_to "編集する", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %>
+          <%= link_to "削除する", book_path(@book.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7 col-md-3 text-center">
+          <%= link_to user_path(@book.user) do %>
+            <%= attachment_image_tag @book.user, :profile_image, fallback: "no_image.png", size:'60x40', class: 'mt-2' %>
+            <p class="pb-0 mb-0 text-dark text-center small"><%= @book.user.nickname %>さんの投稿一覧</p>
+          <% end %>
+        </div>
+      </div>
+      <table class="table table-hover mt-2 book_index">
         <thead>
           <tr>
-            <td></td>
-            <td>本の著者</td>
-            <td>本のタイトル</td>
-            <td>本のジャンル</td>
-            <td>読み終わった日付</td>
+            <td>著者</td>
+            <td>題名</td>
+            <td>ジャンル</td>
+            <td>読み終わった日</td>
           </tr>
         </thead>
-        <tbody class="border-bottom">
+        <tbody>
           <tr>
-            <td><%= attachment_image_tag @book.user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'150x100', class: 'rounded-circle' %>
-                <%= @book.user.nickname %>
-            </td>
             <td><%= @book.author %></td>
             <td><%= @book.book_title %></td>
             <td><%= @book.genre.name %></td>
@@ -23,18 +33,12 @@
           </tr>
         </tbody>
       </table>
-      　<div class="row">
-            <div class="ml-auto">
-            <%= link_to "編集する", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %>
-            <%= link_to "削除する", book_path(@book.id), method: :delete, class: 'btn btn-sm btn-danger' %>
-          </div>
+      <div class="row mx-auto">
+        <span class="small ml-1"><メモ></span>
+        <div class="col-12 border book-note">
+          <%= @book.note %>
         </div>
-        <div class="row">
-          <div class="mt-3">
-            <p>メモ</p>
-            <p class="border"><%= @book.note %></p>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
 </div>

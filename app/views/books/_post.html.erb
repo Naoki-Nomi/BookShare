@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <span class="alert">
+    <% if book.errors.any? %>
+      <%= book.errors.count %>件のエラーが発生しました
+      <% book.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+  </span>
+  <div class="row">
+    <div class="card mx-auto col-11 col-md-10 col-lg-8 p-0 shadow">
+      <h3 class="card-header-register py-3 px-4">
+        <%= form_name %>
+      </h3>
+      <div class="card-body pt-0">
+      <%= form_with model: book, local:true do |f| %>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="input-group input-group-lg mt-2 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+              </div>
+                <%= f.text_field :author, autofocus: true, class: 'form-control', placeholder: "本の著者（空白なし）" %>
+            </div>
+            <div class="input-group input-group-lg mt-2 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
+              </div>
+              <%= f.text_field :book_title, autofocus: true, class: 'form-control', placeholder: "本のタイトル" %>
+            </div>
+            <div class="input-group input-group-lg mt-2 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-list"></i></span>
+              </div>
+              <%= f.select :genre_id, options_from_collection_for_select(genres, :id, :name), { prompt: "本のジャンル" }, { class: 'form-control text-muted' } %>
+            </div>
+             <div class="input-group input-group-lg mt-1 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-table"></i></span>
+              </div>
+              <%= f.date_field :read_date, autofocus: true, class: 'form-control', placeholder: "読み終わった日を入力" %>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-5 d-none d-lg-block">
+            <%=image_tag "book_flower.png", size:'180x130' %>
+          </div>
+        </div>
+        <div class="input-group input-group-lg mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-pen"></i></span>
+          </div>
+            <%= f.text_area :note, autofocus: true, size: "20x5", class: 'form-control', placeholder: "登録する本のメモ（※任意）" %>
+        </div>
+            <%= f.submit "登録する", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

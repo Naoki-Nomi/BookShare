@@ -1,19 +1,46 @@
-<div class="container">
+<div class="container mt-5">
+   <div class="row">
+      <div class="col-3 text-center">
+        <%= link_to user_path(@user) do %>
+          <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", size:'60x40', class: 'mt-2' %>
+          <p class="pb-0 mb-0 text-dark text-center small"><%= @user.nickname %>さんの読書傾向</p>
+        <% end %>
+      </div>
+    </div>
   <div class="row">
-    <div class="col-lg-4 text-center mt-3">
-      <h6>2021年の読書数</h6>
-      <%= link_to "年間で表示", detail_path(period: 0), class: "btn btn-success" %>
-      <%= link_to "月間で表示", detail_path(period: 1), class: "btn btn-success" %>
-      <%= line_chart @books_number, width: "300px", height: "400px", curve: false, messages: {empty: "No data"}, label: "Value" %>
+    <div class="col-lg-4 text-center mt-4 ml-4 ml-md-0">
+      <h5 class="font-weight-bold">読書数</h5>
+      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        期間を選択
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "週間で表示", detail_path(period: 0), class: "dropdown-item" %>
+        <%= link_to "月間で表示", detail_path, class: "dropdown-item" %>
+        <%= link_to "年間で表示", detail_path(period: 1), class: "dropdown-item" %>
+      </div>
+      <div class="offset-md-3 offset-lg-0 mt-3">
+        <%= line_chart @books_number, width: "300px", height: "400px", curve: false, messages: {empty: "No data"}, label: "Value" %>
+      </div>
     </div>
-    <div class="col-lg-4 text-center mt-3">
-      <h6>よくお読みになっている<br>著者</h6>
-      <%= link_to "全ての著者を表示", detail_path(author_number: 0), class: "btn btn-success" %>
-      <%= bar_chart @author_for_graph, width: "300px", height: "400px", messages: {empty: "No data"}, label: "Value" %>
+    <div class="col-lg-4 text-center mt-4">
+      <h5 class="font-weight-bold">よくお読みの著者</h5>
+       <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         表示件数を選択
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "トップ5名を表示", detail_path, class: "dropdown-item" %>
+        <%= link_to "トップ10名を表示", detail_path(author_number: 0), class: "dropdown-item" %>
+        <%= link_to "全ての著者を表示", detail_path(author_number: 1), class: "dropdown-item" %>
+      </div>
+      <div class="offset-md-3 offset-lg-0 mt-3">
+        <%= bar_chart @author_for_graph, width: "300px", height: "400px", messages: {empty: "No data"}, label: "Value" %>
+      </div>
     </div>
-    <div class="col-lg-4 text-center mt-3">
-      <h6>ジャンル</h6>
-      <div class="mx-auto"><%= pie_chart @genre_for_graph, width: "320px", height: "400px", legend: "bottom", messages: {empty: "No data"}, label: "Value" %></div>
+    <div class="col-11 col-lg-4 text-center mt-4 ml-3 ml-md-0">
+      <h5 class="font-weight-bold mr-lg-0 ml-lg-4 mr-xl-3 ml-xl-0">ジャンル</h5>
+      <div class="offset-md-3 offset-lg-0 mt-3">
+        <%= pie_chart @genre_for_graph, width: "320px", height: "400px", legend: "bottom", messages: {empty: "No data"}, label: "Value", class: 'ml-5' %>
+      </div>
     </div>
   </div>
 </div>

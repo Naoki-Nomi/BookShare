@@ -7,7 +7,7 @@
         <% unless @user == current_user %>
           <% if current_user.following?(@user) %>
             <%= link_to unfollow_path(@user), method: :delete do %>
-              <i class="fas fa-star"></i> フォローを外す
+              <i class="fas fa-star"></i> フォロー中
             <% end %>
           <% else %>
             <%= link_to follow_path(@user), method: :post do %>

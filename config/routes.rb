@@ -32,10 +32,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     get :search, on: :collection
   end
+
   get '/book/:user_id/detail' => 'books#detail', as: "detail"
   resources :books do
     get :search, on: :collection
   end
+
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
