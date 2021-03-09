@@ -146,6 +146,14 @@ li {
   border-radius: 30px;
 }
 
+.fa-circle {
+  position: absolute;
+  padding-left: 8px;
+  padding-bottom: 4px;
+  font-size: 0.8em;
+  color: gold;
+}
+
 @media screen and (max-width : 480px){
 	.display-1 {
 		font-size: 60px;
@@ -189,5 +197,14 @@ li {
   .folow-index {
   font-size: 10px;
 }
+
+  .notification {
+  font-size: 10px;
+}
+
+  .notification-picture {
+  width: 50px;
+  height: 35px;
+  }
 
 }

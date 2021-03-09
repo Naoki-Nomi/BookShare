@@ -1,9 +1,17 @@
-<div class="container">
-  <%= link_to "通知を空にする", destroy_all_notification_path, method: :delete %>
-  <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-  <% if notifications.exists? %>
-    <%= render notifications %>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
+<div class="container mt-5 notification">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-6 col-xl-5 mx-auto">
+      <P class="mb-3">
+        <%= link_to destroy_all_notification_path, method: :delete do %>
+          <i class="fas fa-trash"></i> 通知を空にする
+        <% end %>
+      </P>
+      <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+      <% if notifications.exists? %>
+        <%= render notifications %>
+      <% else %>
+        <p>通知はありません</p>
+      <% end %>
+    </div>
+  </div>
 </div>
