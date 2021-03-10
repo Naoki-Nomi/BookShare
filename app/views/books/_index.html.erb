@@ -6,25 +6,18 @@
       </div>
       <%= form_with url: search_books_path, method: :get, local: true do |f| %>
         <div class="row form-group m-0 mb-1">
-            <div class="col-7 col-md-5 col-lg-3 p-0 offset-md-2 offset-lg-4"><%= f.text_field :search, placeholder: 'キーワードを入力', class: 'form-control form-control-sm' %></div>
-            <div class="col-4 col-md-2 col-lg-1 p-0 ml-2"><%= f.select :genre_id, options_from_collection_for_select(genres, :id, :name), { prompt: "ジャンル" }, { class: 'form-control form-control-sm' }%></div>
+            <div class="col-7 col-md-5 col-lg-3 p-0 offset-md-2 offset-lg-3"><%= f.text_field :search, placeholder: 'キーワードを入力', class: 'form-control form-control-sm' %></div>
+            <div class="col-4 col-md-2 col-lg-2 p-0 ml-2"><%= f.select :genre_id, options_from_collection_for_select(genres, :id, :name), { prompt: "ジャンル" }, { class: 'form-control form-control-sm' }%></div>
           </div>
           <div class="row form-group m-0 mb-1">
-            <div class="col-4 col-md-3 col-lg-2 p-0 offset-md-2 offset-lg-4"><%= f.date_field :read_from, class: 'form-control form-control-sm' %></div>
+            <div class="col-4 col-md-3 col-lg-2 p-0 offset-md-2 offset-lg-3"><%= f.date_field :read_from, class: 'form-control form-control-sm' %></div>
             <span>〜</span>
             <div class="col-4 col-md-3 col-lg-2 p-0"><%= f.date_field :read_to, class: 'form-control form-control-sm' %></div>
             <div class="col-2 col-md-2 col-lg-1"><%= f.submit "検索", class: 'btn btn-sm btn-success' %></div>
         </div>
         <%= f.hidden_field :user_id, :value => params[:user_id] %>
       <% end %>
-      <div class="row">
-        <div class="col-3 text-center">
-          <%= link_to user_path(user) do %>
-            <%= attachment_image_tag user, :profile_image, fallback: "no_image.png", size:'60x40', class: 'mt-2' %>
-            <p class="pb-0 mb-0 text-dark text-center small"><%= user.nickname %>さんの登録一覧</p>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'books/user', user: @user, title: "登録一覧" %>
       <table class="table table-hover mt-2 book_index">
         <thead>
           <tr>
