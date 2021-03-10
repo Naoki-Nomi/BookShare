@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-11 col-lg-8 mx-auto m-0 p-0">
+       <%= form_with url: search_relationships_path, method: :get, local: true do |f| %>
+        <div class="row form-group m-0 mb-1">
+          <div class="col-7 col-md-5 col-lg-3 p-0 offset-md-2 offset-lg-4">
+            <%= f.text_field :nickname, placeholder: 'ニックネームを入力', class: 'form-control form-control-sm' %>
+          </div>
+          <div class="col-2 col-md-2 col-lg-1"><%= f.submit "検索", class: 'btn btn-sm btn-success' %></div>
+        </div>
+        <%= f.hidden_field :id, :value => params[:id] %>
+        <%= f.hidden_field :relationship_order, :value => params[:relationship_order] %>
+      <% end %>
+      <%= render 'books/user', user: user, title: title %>
+      <table class="table table-hover text-center folow-index text-nowrap mt-3">
+        <thead>
+          <tr>
+            <td class="small", style="width:20%">ユーザー</td>
+            <td class="small", style="width:20%">投稿数</td>
+            <td class="small", style="width:20%">読書数</td>
+            <td class="small", style="width:20%">フォロー</td>
+            <td class="small", style="width:20%">フォロワー</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.each do |user| %>
+          <tr class="border-bottom">
+            <td class="align-middle p-0">
+              <%= link_to user_path(user) do %>
+                <%= attachment_image_tag user, :profile_image, fallback: "no_image.png", size:'60x40', class: 'mt-2' %>
+                <p class="mb-0"><%= user.nickname %></p>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= link_to user.post_books.count, post_books_path(user_id: user, book_sort: 0) %></td>
+            <td class="align-middle"><%= link_to user.books.count, books_path(user_id: user, book_sort: 0) %></td>
+            <td class="align-middle"><%= link_to user.follower.count, relationships_path(id: user, relationship_order: 0)%></td>
+            <td class="align-middle"><%= link_to user.followed.count, relationships_path(id: user, relationship_order: 1) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

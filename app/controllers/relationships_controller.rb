@@ -26,4 +26,18 @@ class RelationshipsController < ApplicationController
     end
   end
 
+  def search
+    if params[:relationship_order] == "0"
+      @user = User.find(params[:id])
+      @users = @user.following_user.where("nickname Like?", "%#{params[:nickname]}%")
+      @title = "フォロー"
+    elsif params[:relationship_order] == "1"
+      @user = User.find(params[:id])
+      @users = @user.follower_user.where("nickname Like?", "%#{params[:nickname]}%")
+      @title = "フォロワー"
+    else
+      redirect_to root_path
+    end
+  end
+
 end

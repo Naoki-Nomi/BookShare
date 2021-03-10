@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-  get 'users/page/:id/relationships' => 'relationships#index', as: 'relationship'
+  resources :relationships, only: [:index] do
+    get :search, on: :collection
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

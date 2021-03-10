@@ -47,5 +47,4 @@ class User < ApplicationRecord
       notification.save
     end
   end
-
 end
