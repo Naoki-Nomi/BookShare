@@ -2,7 +2,7 @@ class Admin::PostBooksController < ApplicationController
 
   def index
     @search = PostBook.ransack(params[:q])
-    @post_books = @search.result
+    @post_books = @search.result.page(params[:page]).reverse_order
     @genres = Genre.all
   end
 

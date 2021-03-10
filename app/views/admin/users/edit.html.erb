@@ -5,17 +5,15 @@
         ユーザー編集
       </h4>
       <div class="card-body pt-1">
+        <label class="text-center">会員ステータス</label>
         <%= form_with model: @user, url: admin_user_path(@user), local:true do |f| %>
-          <div class="row form-group d-flex align-items-center mx-auto">
-            <label class="col-lg-4">会員ステータス</label>
-            <div class"col-lg-8">
-              <%= f.radio_button :is_deleted, :有効 %>
-              <%= f.label :payment_method, "有効" %>
-              <%= f.radio_button :is_deleted, :退会済み %>
-              <%= f.label :payment_method, "退会済み" %>
-            </div>
+          <div class="row form-group mx-auto">
+            <div class="offset-3 offset-xl-4"><%= f.radio_button :is_deleted, :有効 %></div>
+            <div class=""><%= f.label :is_deleted, "有効" %></div>
+            <div class="pl-3 pl-md-5 pl-xl-3"><%= f.radio_button :is_deleted, :退会済み %></div>
+            <div class=""><%= f.label :is_deleted, "退会済み" %></div>
           </div>
-              <%= f.submit "編集内容を保存", class: 'btn btn-success btn-block border-0' %>
+        <%= f.submit "編集内容を保存", class: 'btn btn-success btn-block border-0' %>
         <% end %>
       </div>
     </div>

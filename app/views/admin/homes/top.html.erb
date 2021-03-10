@@ -1,37 +1,46 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-6 mx-auto my-5">
+    <div class="col-12 col-md-12 col-lg-10 mx-auto">
       <%= search_form_for @search, url: admin_root_path do |f| %>
-        <%= f.search_field :nickname_or_email_cont_any, placeholder: 'ニックネームまたはemailで検索' %>
-        <%= f.select :is_deleted_eq, [['有効', false], ['退会済み', true]], { include_blank: "指定なし" }, { class: "form-control" }  %>
-        <%= f.button :type => "submit", style: 'border-style: none;' do %>
-          <i class='fas fa-search'></i>
-        <% end %>
+      <div class="row form-group">
+        <div class="col-5 col-md-7 col-lg-4 offset-1 offset-md-0 offset-lg-2 px-0">
+          <%= f.search_field :nickname_or_email_cont_any, placeholder: 'ニックネーム、メールアドレスで検索', class: "form-control" %>
+        </div>
+        <div  class="col-4 col-md-3 col-lg-2 pr-0">
+          <%= f.select :is_deleted_eq, [['有効', false], ['退会済み', true]], { include_blank: "指定なし" }, { class: "form-control" }  %>
+        </div>
+        <div  class="col-2 col-md-2 col-lg-2 mt-1">
+          <%= f.submit "検索", class: 'btn btn-sm btn-success' %>
+        </div>
+      </div>
       <% end %>
+    <table class="table table-hover mt-4 admin-user text-nowrap">
+      <thead>
+        <tr>
+          <td></td>
+          <td>ニックネーム</td>
+          <td>メールアドレス</td>
+          <td>登録日</td>
+          <td>ステータス</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td class="align-middle"><%= attachment_image_tag user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'60x50', class: 'admin-user-pic' %></td>
+          <td class="align-middle"><%= user.nickname %></td>
+          <td class="align-middle"><%= user.email %></td>
+          <td class="align-middle"><%= user.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="align-middle"><%= user.is_deleted %></td>
+          <td class="align-middle"><%= link_to "編集する", edit_admin_user_path(user), class: "btn btn-sm btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
     </div>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td></td>
-        <td>ニックネーム</td>
-        <td>Eメールアドレス</td>
-        <td>登録日</td>
-        <td>ステータス</td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-      <tr>
-        <td><%= attachment_image_tag user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'150x100', class: 'rounded-circle' %></td>
-        <td><%= user.nickname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= user.is_deleted %></td>
-        <td><%= link_to "編集する", edit_admin_user_path(user), class: "btn btn-sm btn-success" %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+</div>
+<div class="row">
+  <div class="d-block mx-auto small"><%= paginate @users %></div>
 </div>
