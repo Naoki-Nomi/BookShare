@@ -8,14 +8,13 @@
 Admin.find_or_create_by(id: 1) do |admin|
  admin.email = "sample@sample.com"
  admin.password = "samplesample"
-
-
+end
 
  PostBook.create!(
  [
   {
-   user_id: 6,
-   genre_id: 3,
+   user_id: 1,
+   genre_id: 1,
    title: "マーケティング",
    content: "この本では、マーケティングのための調査体型を1から教えてくれます。",
    post_book_title: "マーケティングリサーチ",
@@ -23,5 +22,4 @@ Admin.find_or_create_by(id: 1) do |admin|
    post_book_image_id: nil
    }
  ]
- )
-end
+)

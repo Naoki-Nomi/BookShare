@@ -17,7 +17,7 @@
       <% if params[:user_id] %>
         <%= render 'books/user', user: @user, title: "投稿一覧" %>
       <% end %>
-      <table class="table table-hover mt-2 col-lg-11 mx-auto">
+      <table class="table table-hover mt-4 col-lg-11 mx-auto">
         <% post_books.each do |post_book| %>
         <tr class="border-bottom">
           <td class="text-center px-0 pb-0", style='width:25%'>

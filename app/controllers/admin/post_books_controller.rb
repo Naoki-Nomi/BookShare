@@ -1,4 +1,6 @@
 class Admin::PostBooksController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @search = PostBook.ransack(params[:q])
     @post_books = @search.result.page(params[:page]).reverse_order

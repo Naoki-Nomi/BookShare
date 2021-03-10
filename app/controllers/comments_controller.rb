@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @post_book = PostBook.find(params[:post_book_id])
     @comment = Comment.new(comment_params)

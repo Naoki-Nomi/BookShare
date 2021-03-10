@@ -1,4 +1,6 @@
 class PostBooksController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @post_book = PostBook.new
     @genres = Genre.all
