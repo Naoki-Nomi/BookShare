@@ -1,5 +1,4 @@
 class Admin::PostBooksController < ApplicationController
-
   def index
     @search = PostBook.ransack(params[:q])
     @post_books = @search.result.page(params[:page]).reverse_order
@@ -15,5 +14,4 @@ class Admin::PostBooksController < ApplicationController
     post_book.destroy
     redirect_to admin_post_books_path
   end
-
 end

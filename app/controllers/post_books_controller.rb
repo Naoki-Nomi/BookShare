@@ -1,5 +1,4 @@
 class PostBooksController < ApplicationController
-
   def new
     @post_book = PostBook.new
     @genres = Genre.all
@@ -65,5 +64,4 @@ class PostBooksController < ApplicationController
   def post_book_params
     params.require(:post_book).permit(:genre_id, :title, :content, :post_book_title, :post_book_author, :post_book_image)
   end
-
 end

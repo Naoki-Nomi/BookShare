@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     @post_book = PostBook.find(params[:post_book_id])
     @comment = Comment.new(comment_params)
@@ -23,5 +22,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment_content)
   end
-
 end

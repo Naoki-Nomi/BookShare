@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-
   def new
     @book = Book.new
     @genres = Genre.all
@@ -37,7 +36,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    if @book.user_id == current_user.id #登録の詳細画面は登録者のみ確認可能
+    if @book.user_id == current_user.id # 登録の詳細画面は登録者のみ確認可能
       render :show
     else
       redirect_to books_path(user_id: @book.user_id, book_sort: 0)
@@ -90,7 +89,7 @@ class BooksController < ApplicationController
     else
       author_number = "5"
     end
-     @author_for_graph = @books.group(:author).order('count_all DESC').limit(author_number).count
+    @author_for_graph = @books.group(:author).order('count_all DESC').limit(author_number).count
   end
 
   private
@@ -98,5 +97,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:genre_id, :book_title, :author, :note, :read_date)
   end
-
 end

@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-
   def create
     post_book = PostBook.find(params[:post_book_id])
     favorite = Favorite.new
@@ -8,12 +7,11 @@ class FavoritesController < ApplicationController
     if favorite.save
       post_book.create_notification_favorite(current_user)
     end
-    redirect_to  post_book_path(post_book)
+    redirect_to post_book_path(post_book)
   end
 
   def destroy
     Favorite.find_by(user_id: current_user.id, post_book_id: params[:post_book_id]).destroy
-    redirect_to  post_book_path(params[:post_book_id])
+    redirect_to post_book_path(params[:post_book_id])
   end
-
 end

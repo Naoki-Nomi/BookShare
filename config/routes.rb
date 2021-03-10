@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-
   root to: 'homes#top'
   devise_for :admin, controllers: {
     sessions: 'admin/admins/sessions'
   }
 
   namespace :admin do
-    resources :genres, only:[:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
     root to: 'homes#top'
-    resources :users, only:[:edit, :update]
-    resources :post_books, only:[:index, :show, :destroy] do
+    resources :users, only: [:edit, :update]
+    resources :post_books, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
   end
-
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -37,7 +35,6 @@ Rails.application.routes.draw do
   resources :books do
     get :search, on: :collection
   end
-
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'

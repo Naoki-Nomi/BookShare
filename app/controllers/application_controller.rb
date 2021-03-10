@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  #サインイン後、Adminは会員一覧にリダイレクトする
+  # サインイン後、Adminは会員一覧にリダイレクトする
 
   def after_sign_in_path_for(resource)
     case resource
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #サインアウト後、Adminはサインイン画面にリダイレクトする
+  # サインアウト後、Adminはサインイン画面にリダイレクトする
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
@@ -31,5 +31,4 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-
 end

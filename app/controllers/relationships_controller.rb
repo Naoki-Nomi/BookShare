@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   def follow
     current_user.follow(params[:id])
     user = User.find(params[:id])
@@ -39,5 +38,4 @@ class RelationshipsController < ApplicationController
       redirect_to root_path
     end
   end
-
 end
