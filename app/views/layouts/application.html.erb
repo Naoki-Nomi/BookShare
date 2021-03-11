@@ -74,7 +74,12 @@
     <%= yield %>
     </main>
     <footer>
-      <p class="fotter-text text-center py-2 mt-5 mb-0 font-weight-bold">Copyright © BookShare</p>
+      <p class="fotter-text text-center py-2 mt-5 mb-0 font-weight-bold">
+        Copyright © BookShare
+      <%= link_to new_contact_path, class: "text-dark" do %>
+        <i class="fas fa-envelope"></i>お問い合わせ
+      <% end %>
+      </p>
     </footer>
   </body>
 </html>

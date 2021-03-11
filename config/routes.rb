@@ -41,5 +41,9 @@ Rails.application.routes.draw do
   resources :relationships, only: [:index] do
     get :search, on: :collection
   end
+
+  resources :contacts, only: [:new, :create]
+  post 'contact/confirm' => 'contacts#confirm'
+  get 'contact/thanks' => 'contacts#thanks'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
