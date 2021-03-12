@@ -20,6 +20,8 @@ class PostBooksController < ApplicationController
   def index
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
+    @title = "投稿一覧"
+    @url = search_post_books_path
     if params[:book_sort] == "0"
       @post_books = PostBook.where(user_id: params[:user_id])
       @post_books = @post_books.page(params[:page]).reverse_order
@@ -31,6 +33,8 @@ class PostBooksController < ApplicationController
   def search
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
+    @title = "投稿一覧"
+    @url = search_post_books_path
     @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id], params[:post_from], params[:post_to])
     @post_books = @post_books.page(params[:page]).reverse_order
   end

@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     get :search, on: :collection
   end
-  get 'favorites/:user_id/index' => 'favorites#index', as: "favorites_index"
+  resources :favorites, only: [:index] do
+    get :search, on: :collection
+  end
 
   get '/book/:user_id/detail' => 'books#detail', as: "detail"
   resources :books do
