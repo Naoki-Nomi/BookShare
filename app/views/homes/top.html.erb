@@ -12,16 +12,16 @@
     <p class="small">アイラ・ガーシュイン</p>
   </div>
 </div>
-<div class="container">
+<div class="container p-0">
   <div class="top_background mt-5">
     <div class="text-center">
       <i class="fas fa-bookmark fa-3x"></i>
-      <h1 class="font-weight-bold mt-3">- BookShareの概要 -</h1>
+      <h1 class="font-weight-bold mt-3 top-outline">- BookShareの概要 -</h1>
     </div>
     <div class="container">
       <ul class="list-group h3">
         <li class="list-group-item border-0 font-weight-bold my-2">
-          ◆ <u>BookShareとは？</u>
+          ◆ <span class="top-outline-sentence">BookShareとは？</span>
             <ul>
               <li class="h6">
                 −読書体験共有型のSNS＆読書記録に活用頂ける、webアプリケーションサービスです。
@@ -29,7 +29,7 @@
             </ul>
         </li>
         <li class="list-group-item border-0 font-weight-bold my-2">
-          ◆ <u>BookShareを活用するメリットは？</u>
+          ◆ <span class="top-outline-sentence">BookShareを活用するメリットは？</span>
             <ul>
               <li class="h6">
                 −論理的思考力や多面的な知見を身につけることができます。
@@ -38,7 +38,7 @@
             </ul>
         </li>
         <li class="list-group-item border-0 font-weight-bold my-2">
-          ◆ <u>BookShareの使い方は？</u>
+          ◆ <span class="top-outline-sentence">BookShareの使い方は？</span>
             <ul>
               <li class="h6">
                 −感想や考察の投稿、読書記録に活用できます。詳細は
@@ -47,7 +47,7 @@
             </ul>
         </li>
         <li class="list-group-item border-0 font-weight-bold my-2">
-          ◆ <u>開発者からのメッセージ</u>
+          ◆ <span class="top-outline-sentence">開発者からのメッセージ</span>
             <ul>
               <li class="h6">
                 −情報で溢れる現代だからこそ、じっくり本を読むことはとても大切なことだと思います。<br>
@@ -61,7 +61,7 @@
   <div class="top_merit mt-5">
     <div class="text-center">
       <i class="fas fa-book fa-3x"></i>
-      <h1 class="font-weight-bold mt-3", id="merit" >- BookShareの利点 -</h1>
+      <h1 class="font-weight-bold mt-3 top-outline", id="merit" >- BookShareの利点 -</h1>
     </div>
     <div class="card-deck mt-5">
       <div class="row row-eq-height">
@@ -107,71 +107,61 @@
   <div class="top_how mt-5">
     <div class="text-center">
       <i class="fab fa-leanpub fa-4x mt-5"></i>
-      <h1 class="font-weight-bold mt-3", id="use">- BookShareの使い方 -</h1>
+      <h1 class="font-weight-bold mt-3 top-outline", id="use">- BookShareの使い方 -</h1>
       <p class="small">※サービスのご利用には、<%= link_to '新規登録', new_user_registration_path %>が必要です。</p>
     </div>
     <div class="border border-dark">
-      <div class="h4 mt-4 ml-2 font-weight-bold instruction_title">◆ 読んだ本の感想や考察の共有</div>
+      <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本の感想や考察の共有</span></div>
       <div class="container">
         <div class="row mt-4">
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>①</h3>
-            <h4>マイページ</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>マイページから<br>
-               プロフィールを編集</p>
+            <%= image_tag "top-image1.png", size:'120x40' %><br>
+            <p class="mt-5"><i class="fas fa-hand-point-up"></i> 新規登録をクリック</p>
           </div>
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>②</h3>
-            <h4>新規投稿</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>新規投稿をクリック</p>
+            <%= image_tag "top-image2.png", size:'180x140' %><br>
+            <p class="mt-4"><i class="fas fa-edit"></i>  感想を記入し投稿</p>
           </div>
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>③</h3>
-            <h4>イラスト</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>読んだ本の感想や考察<br>
-               を記入にして投稿</p>
+            <%= image_tag "top-image3.png", size:'180x140' %><br>
+             <p class="mt-4"><i class="fas fa-copy"></i> 一覧に表示されます</p>
           </div>
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>④</h3>
-            <h4>イラスト</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>一覧に表示されます。<br>
-               投稿には、コメントができます！</p>
+            <%= image_tag "top-image4.png", size:'180x140' %><br>
+            <p class="mt-4">
+            投稿には、<i class="fas fa-comments"></i> コメントや<br>
+            <i class="fas fa-thumbs-up"></i> いいねができます！</p>
           </div>
         </div>
       </div>
-      <div class="h4 mt-4 ml-2 font-weight-bold instruction_title">◆ お読みになった本を記録</div>
+      <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">お読みになった本を記録</span></div>
       <div class="container">
         <div class="row mt-4">
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>①</h3>
-            <h4>読書登録</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>ヘッダーの読書登録より、<br>
-               読み終わった本を登録</p>
+            <%= image_tag "top-image5.png", size:'120x40' %><br>
+            <p class="mt-5"><i class="fas fa-hand-point-up"></i> 読書登録をクリック</p>
           </div>
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>②</h3>
-            <h4>読書記録</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>マイページの読書記録<br>
-               をクリック</p>
+            <%= image_tag "top-image6.png", size:'180x140' %><br>
+            <p class="mt-4"><i class="fas fa-edit"></i> 著者などを記入し登録</p>
           </div>
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>③</h3>
-            <h4>イラスト</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>登録した読書一覧を確認</p>
+            <%= image_tag "top-image7.png", size:'180x140' %><br>
+            <p class="mt-4"><i class="fas fa-book-open"></i> 読書一覧に登録されます</p>
           </div>
           <div class="col-sm-6 col-lg-3 text-center">
             <h3>④</h3>
-            <h4>イラスト</h4>
-            <i class="fas fa-hand-point-up"></i>
-            <p>グラフから、読書傾向を<br>
-               視覚的に把握</p>
+            <%= image_tag "top-image8.png", size:'180x115' %><br>
+            <p class="mt-5"><i class="fas fa-signal"></i>
+            グラフから読書傾向を<br>
+            視覚的に把握できます</p>
           </div>
         </div>
       </div>

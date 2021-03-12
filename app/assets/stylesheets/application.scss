@@ -78,12 +78,16 @@ li {
   font-style: italic;
 }
 
+.top-outline-sentence {
+  background:linear-gradient(transparent 80%, #94c674 0%);
+}
+
 .card-header {
   background-color: #47763c;
 }
 
 .instruction_title {
-  color: #47763c;
+  background:linear-gradient(transparent 80%, #94c674 0%);
 }
 
 .mypage-introduction {
@@ -140,7 +144,6 @@ li {
   background: #93c9ff;
   border-radius: 30px;
 }
-
 
 .pagination>li>a:hover {
   border-radius: 30px;
