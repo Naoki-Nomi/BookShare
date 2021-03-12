@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :post_books, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
+    resources :contacts, only: [:index, :show]
   end
 
   devise_for :users, controllers: {

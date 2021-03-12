@@ -1,0 +1,20 @@
+<div class="container mt-5 mx-auto">
+  <table class="table table-hover col-11 col-md-10 col-lg-8 mx-auto text-nowrap">
+    <thead>
+      <tr>
+        <th class="text-center">お名前</th>
+        <th class="text-center">メールアドレス</th>
+        <th class="text-center">お問い合わせ内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+      <tr>
+        <td class="text-center"><%= link_to contact.name, admin_contact_path(contact), class: 'text-dark' %></td>
+        <td class="text-center"><%= link_to contact.email, admin_contact_path(contact), class: 'text-dark' %></td>
+        <td class="text-center"><%= link_to contact.content.truncate(10), admin_contact_path(contact), class: 'text-dark' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
