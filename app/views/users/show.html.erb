@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col text-center mupage-image mt-5">
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", size: "200x150"  %>
-      <p class="mb-0"><%= @user.nickname %></p>
+      <p class="mb-0 font-weight-bold"><%= @user.nickname %></p>
       <p>
         <% unless @user == current_user %>
           <% if current_user.following?(@user) %>
