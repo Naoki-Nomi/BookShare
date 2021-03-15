@@ -1,5 +1,11 @@
-<div class="container">
-  <div class="col-md-8 mt-5 offset-1">
+<div class="container mt-5">
+  <% if @genre.errors.any? %>
+    <%= @genre.errors.count %>件のエラーが発生しました
+    <% @genre.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  <div class="col-md-8 offset-1">
     <label>ジャンル名を編集</label>
     <div class="form-inline">
       <%= form_with model: @genre, url: admin_genre_path, local:true do |f|%>

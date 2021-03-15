@@ -19,6 +19,12 @@
       </table>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-5 mt-5 offset-lg-1">
+      <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のエラーが発生しました
+        <% @genre.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
       <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
         <label>新規登録</label>
       <div class="form-inline">
