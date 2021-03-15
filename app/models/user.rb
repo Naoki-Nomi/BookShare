@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   enum is_deleted: { 有効: false, 退会済み: true }
 
-  validates :nickname, presence: true, uniqueness: true, length: { maximum: 10 } # ニックネームは一意性
+  validates :nickname, presence: true, uniqueness: true, length: { minimum: 2, maximum: 10 }
+  validates :introduction, length: { maximum: 400 }
   validates :email, presence: true
 
   has_many :post_books, dependent: :destroy
