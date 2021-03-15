@@ -9,8 +9,8 @@ class PostBook < ApplicationRecord
   attachment :post_book_image
 
   validates :post_book_author, presence: true, length: { maximum: 30 }
-  validates :post_book_title, presence: true, length: { maximum: 40 }
-  validates :title, presence: true, length: { maximum: 40 }
+  validates :post_book_title, presence: true, length: { maximum: 30 }
+  validates :title, presence: true, length: { maximum: 30 }
   validates :content, presence: true, length: { maximum: 1200 }
 
   def favorited_by?(user)
