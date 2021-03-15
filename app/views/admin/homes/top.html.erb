@@ -28,7 +28,7 @@
       <tbody>
         <% @users.each do |user| %>
         <tr>
-          <td class="align-middle"><%= attachment_image_tag user, :profile_image, :fill, 70, 60, fallback: "no_image.jpg", size:'60x50', class: 'admin-user-pic' %></td>
+          <td class="align-middle"><%= attachment_image_tag user, :profile_image, :fill, 70, 60, fallback: "no_image.png", size:'60x50', class: 'admin-user-pic' %></td>
           <td class="align-middle"><%= user.nickname %></td>
           <td class="align-middle"><%= user.email %></td>
           <td class="align-middle"><%= user.created_at.strftime('%Y/%m/%d') %></td>
