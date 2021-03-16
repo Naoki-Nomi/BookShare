@@ -2,7 +2,7 @@
   <div class="col-6 col-md-4 text-center">
     <%= link_to user_path(user) do %>
       <%= attachment_image_tag user, :profile_image, fallback: "no_image.png", size:'60x40', class: 'mt-2' %>
-      <p class="pb-0 mb-0 text-dark text-center small"><%= user.nickname %>さんの<%= title %></p>
+      <p class="pb-0 mb-0 text-center small"><%= user.nickname %>さんの<%= title %></p>
     <% end %>
   </div>
 </div>

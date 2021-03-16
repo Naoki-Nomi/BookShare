@@ -139,6 +139,27 @@ li {
   word-break: break-word;
 }
 
+.post-form {
+  background-image: image-url('post_image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: scroll;
+  min-height: 300px;
+}
+
+.post-book-title {
+  color: #0066CC;
+}
+
+.page-title {
+  padding: 0.5em;
+  color: #494949;
+  background: #F7FFF4;
+  border-left: solid 5px #47763c;
+  font-weight: bold;
+}
+
 .book-note {
   word-break: break-word;
 }

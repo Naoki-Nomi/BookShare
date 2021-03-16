@@ -39,6 +39,9 @@
           <% end %>
         </tbody>
       </table>
+      <% if users.blank? %>
+        <p class="text-center">該当するデータはありません</p>
+      <% end %>
     </div>
   </div>
 </div>

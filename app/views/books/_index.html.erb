@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-11 col-lg-10 mx-auto">
+      <h4 class="col-2 ml-0 ml-md-2 ml-lg-5 page-title">読書一覧</h4>
       <div class="text-right mb-3 mb-md-0">
         <%= link_to "グラフで確認", detail_path(user_id: params[:user_id]), class: 'btn btn-success' %>
       </div>
@@ -45,6 +46,9 @@
           <% end %>
         </tbody>
       </table>
+      <% if books.blank? %>
+        <p class="text-center">該当するデータはありません</p>
+      <% end %>
     </div>
   </div>
 </div>

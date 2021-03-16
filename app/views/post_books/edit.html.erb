@@ -1,59 +1,61 @@
-<div class="container mt-5">
-  <span class="alert">
-    <% if @post_book.errors.any? %>
-      <%= @post_book.errors.count %>件のエラーが発生しました
-      <% @post_book.errors.full_messages.each do |message| %>
-        <%= message %>
+<div class="post-form">
+  <div class="container mt-5">
+    <span class="alert">
+      <% if @post_book.errors.any? %>
+        <%= @post_book.errors.count %>件のエラーが発生しました
+        <% @post_book.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
       <% end %>
-    <% end %>
-  </span>
-  <div class="row">
-    <div class="card mx-auto col-11 col-md-10 col-lg-8 p-0 shadow">
-      <h3 class="card-header-register py-3 px-4">
-        投稿編集フォーム
-      </h3>
-      <div class="card-body pt-0">
-      <%= form_with model: @post_book, url: post_book_path, local:true do |f| %>
-        <div class="row">
-          <div class="col-lg-8">
-            <%= f.attachment_field :post_book_image, placeholder: "投稿する本の画像", class: "mt-2" %>
+    </span>
+    <div class="row">
+      <div class="card mx-auto col-11 col-md-10 col-lg-8 p-0 shadow">
+        <h3 class="card-header-register py-3 px-4">
+          投稿編集フォーム
+        </h3>
+        <div class="card-body pt-0">
+        <%= form_with model: @post_book, url: post_book_path, local:true do |f| %>
+          <div class="row">
+            <div class="col-lg-8">
+              <%= f.attachment_field :post_book_image, placeholder: "投稿する本の画像", class: "mt-2" %>
+                <div class="input-group input-group-lg mt-2 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+                  </div>
+                  <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "投稿する本の著者" %>
+                </div>
+                <div class="input-group input-group-lg mt-2 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
+                  </div>
+                  <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "投稿する本のタイトル" %>
+                </div>
               <div class="input-group input-group-lg mt-2 mb-2">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+                  <span class="input-group-text"><i class="fas fa-list"></i></span>
                 </div>
-                <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "投稿する本の著者" %>
+                <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control' } %>
               </div>
-              <div class="input-group input-group-lg mt-2 mb-2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
-                </div>
-                <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "投稿する本のタイトル" %>
-              </div>
-            <div class="input-group input-group-lg mt-2 mb-2">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-list"></i></span>
-              </div>
-              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control' } %>
+            </div>
+            <div class="col-lg-4 mt-lg-5 d-none d-lg-block">
+              <%= attachment_image_tag @post_book, :post_book_image, :fill, 180, 130, fallback: "no_image_book.jpg", size:'160x180' %>
             </div>
           </div>
-          <div class="col-lg-4 mt-lg-5 d-none d-lg-block">
-            <%= attachment_image_tag @post_book, :post_book_image, :fill, 180, 130, fallback: "no_image_book.jpg", size:'160x180' %>
+          <div class="input-group input-group-lg mt-1 mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-heading"></i></span>
+            </div>
+            <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "タイトル" %>
           </div>
-        </div>
-        <div class="input-group input-group-lg mt-1 mb-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-heading"></i></span>
+          <div class="input-group input-group-lg mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-pen"></i></span>
+            </div>
+              <%= f.text_area :content, autofocus: true, size: "20x8", class: 'form-control', placeholder: "投稿内容" %>
           </div>
-          <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "タイトル" %>
+              <%= f.submit "投稿", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
+        <% end %>
         </div>
-        <div class="input-group input-group-lg mb-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-pen"></i></span>
-          </div>
-            <%= f.text_area :content, autofocus: true, size: "20x8", class: 'form-control', placeholder: "投稿内容" %>
-        </div>
-            <%= f.submit "投稿", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
-      <% end %>
       </div>
     </div>
   </div>
