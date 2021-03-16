@@ -13,15 +13,19 @@
   </div>
 </div>
 <div class="container p-0">
-  <div class="top_background mt-5">
+  <div class="top-btn text-center">
+    <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-info mx-3 mb-1' %><br class="sp_br">
+    <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-info mx-3  mb-1' %><br class="sp_br">
+    <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class: 'btn btn-info mx-3 mb-1' %>
+  </div>
+  <div class="top-background mt-5">
     <div class="text-center">
-      <i class="fas fa-bookmark fa-3x"></i>
-      <h1 class="font-weight-bold mt-3 top-outline">- BookShareの概要 -</h1>
+      <h1 class="font-weight-bold mt-3 top-outline">BookShareとは？</h1>
     </div>
     <div class="container">
       <ul class="list-group h3">
         <li class="list-group-item border-0 font-weight-bold my-2">
-          ◆ <span class="top-outline-sentence">BookShareとは？</span>
+          ◆ <span class="top-outline-sentence">BookShareってなに？</span>
             <ul>
               <li class="h6">
                 −読書体験共有型のSNS＆読書記録に活用頂ける、webアプリケーションサービスです。
@@ -33,7 +37,7 @@
             <ul>
               <li class="h6">
                 −論理的思考力や多面的な知見を身につけることができます。
-                 <%= link_to "BookShareの利点", root_path(anchor: 'merit') %>をご参照ください。
+                 <%= link_to "BookShareのメリット", root_path(anchor: 'merit') %>をご参照ください。
               </li>
             </ul>
         </li>
@@ -58,110 +62,96 @@
       </ul>
     </div>
   </div>
-  <div class="top_merit mt-5">
+  <div class="top-merit mt-5">
     <div class="text-center">
-      <i class="fas fa-book fa-3x"></i>
-      <h1 class="font-weight-bold mt-3 top-outline", id="merit" >- BookShareの利点 -</h1>
+      <h1 class="font-weight-bold mt-3 top-outline", id="merit" >BookShareのメリット</h1>
     </div>
     <div class="card-deck mt-5">
       <div class="row row-eq-height">
-        <div class="col-xl-4">
+        <div class="col-10 col-xl-4 offset-1 offset-xl-0">
           <div class="card text-center border border-dark">
             <div class="card-header text-white h3">
               論理的思考力の訓練
             </div>
             <div class="card-body p-0 my-3">
-              <%= image_tag 'top_design1.jpg', size: "325x280" %>
-              <p class="card-text mt-2">自分の考えを言語化することで、<br>
-                                   論理的な思考力を訓練できます</p>
+              <%= image_tag 'top_design1.jpg', size: "325x280", class: 'top-merit-pic' %>
+              <p class="card-text mt-2">自分の考えを言葉にすることで、<br>
+                                   論理的な考え方を訓練できます</p>
             </div>
           </div>
         </div>
-        <div class="col-xl-4 mt-2 mt-xl-0">
+        <div class="col-10 col-xl-4 mt-2 mt-xl-0 offset-1 offset-xl-0">
           <div class="card text-center border border-dark">
             <div class="card-header text-white h3">
-              多面的な知見の獲得
+              多面的な考え方を育成
             </div>
             <div class="card-body p-0 my-3">
-              <%= image_tag 'top_design2.jpg', size: "325x280" %>
-              <p class="card-text mt-2">他者の解釈や考えを学ぶことで、<br>
+              <%= image_tag 'top_design2.jpg', size: "325x280", class: 'top-merit-pic' %>
+              <p class="card-text mt-2">他の人の意見や考えを学ぶことで、<br>
                                     多面的な考え方が身につきます
             </div>
           </div>
         </div>
-        <div class="col-xl-4 mt-2 mt-xl-0">
+        <div class="col-10 col-xl-4 mt-2 mt-xl-0 offset-1 offset-xl-0">
           <div class="card text-center border border-dark">
             <div class="card-header text-white h3">
               読書習慣の定着
             </div>
-            <div class="card-body p-0 my-3">
-              <%= image_tag 'top_design3.jpg', size: "325x280" %>
+            <div class="card-body <p-></p->0 my-3">
+              <%= image_tag 'top_design3.jpg', size: "325x280", class: 'top-merit-pic' %>
               <p class="card-text mt-2">読み終わった本を記録にすることで、<br>
-                                    読書習慣を身につけることができます</p>
+                                    読書を習慣化することができます</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="top_how mt-5">
+  <div class="top-how mt-5">
     <div class="text-center">
-      <i class="fab fa-leanpub fa-4x mt-5"></i>
-      <h1 class="font-weight-bold mt-3 top-outline", id="use">- BookShareの使い方 -</h1>
-      <p class="small">※サービスのご利用には、<%= link_to '新規登録', new_user_registration_path %>が必要です。</p>
+      <h1 class="font-weight-bold mt-3 top-outline", id="use">BookShareの使い方</h1>
+      <p class="small mt-4">※サービスのご利用には、<%= link_to '新規登録', new_user_registration_path %>が必要です。</p>
     </div>
-    <div class="border border-dark">
+    <div class="col-lg-12 border border-dark pb-3 mx-2 mx-md-0">
       <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本の感想や考察の共有</span></div>
       <div class="container">
         <div class="row mt-4">
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>①</h3>
-            <%= image_tag "top-image1.png", size:'120x40' %><br>
-            <p class="mt-5"><i class="fas fa-hand-point-up"></i> 新規登録をクリック</p>
+          <div class="col-lg-6 text-center">
+            <h2>①</h2>
+            <p class="mt-2">
+              ページ先頭の<i class="fas fa-feather-alt"></i><strong>新規登録</strong>をクリック。<br>
+              内容を記入し、投稿しましょう！
+            </p>
+            <%= image_tag "top-image1.png", size:'320x250', class: 'top-how-pic' %><br>
           </div>
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>②</h3>
-            <%= image_tag "top-image2.png", size:'180x140' %><br>
-            <p class="mt-4"><i class="fas fa-edit"></i>  感想を記入し投稿</p>
-          </div>
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>③</h3>
-            <%= image_tag "top-image3.png", size:'180x140' %><br>
-             <p class="mt-4"><i class="fas fa-copy"></i> 一覧に表示されます</p>
-          </div>
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>④</h3>
-            <%= image_tag "top-image4.png", size:'180x140' %><br>
-            <p class="mt-4">
-            投稿には、<i class="fas fa-comments"></i> コメントや<br>
-            <i class="fas fa-thumbs-up"></i> いいねができます！</p>
+          <div class="col-lg-6 text-center">
+            <h2 class="mt-3 mt-lg-0">②</h2>
+            <p class="mt-2">
+              投稿すると一覧に表示されます。<br>
+              <u>投稿には <i class="fas fa-comments"></i><strong>コメント</strong>や <i class="fas fa-thumbs-up"></i><strong>いいね</strong>ができます！</u>
+            </p>
+            <%= image_tag "top-image2", size:'320x250', class: 'top-how-pic' %><br>
           </div>
         </div>
       </div>
-      <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">お読みになった本を記録</span></div>
+      <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本を記録</span></div>
       <div class="container">
         <div class="row mt-4">
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>①</h3>
-            <%= image_tag "top-image5.png", size:'120x40' %><br>
-            <p class="mt-5"><i class="fas fa-hand-point-up"></i> 読書登録をクリック</p>
+          <div class="col-lg-6 text-center">
+            <h2>①</h2>
+            <p class="mt-2">
+              ページ先頭の<i class="fas fa-bookmark"></i><strong>読書登録</strong>をクリック。<br>
+              本の情報を記入し、登録してください！
+            </p>
+            <%= image_tag "top-image3.png", size:'320x250', class: 'top-how-pic' %><br>
           </div>
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>②</h3>
-            <%= image_tag "top-image6.png", size:'180x140' %><br>
-            <p class="mt-4"><i class="fas fa-edit"></i> 著者などを記入し登録</p>
-          </div>
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>③</h3>
-            <%= image_tag "top-image7.png", size:'180x140' %><br>
-            <p class="mt-4"><i class="fas fa-book-open"></i> 読書一覧に登録されます</p>
-          </div>
-          <div class="col-sm-6 col-lg-3 text-center">
-            <h3>④</h3>
-            <%= image_tag "top-image8.png", size:'180x115' %><br>
-            <p class="mt-5"><i class="fas fa-signal"></i>
-            グラフから読書傾向を<br>
-            視覚的に把握できます</p>
+          <div class="col-lg-6 text-center">
+            <h2 class="mt-3 mt-lg-0">②</h2>
+            <p class="mt-2">
+              <u>読書記録は <i class="fas fa-signal"></i><strong>グラフ</strong>で確認することができます。</u><br>
+            　どんどん本を読んで、登録してみてください！
+            </p>
+            <%= image_tag "top-image4.png", size:'340x200', class: 'top-how-pic' %><br>
           </div>
         </div>
       </div>

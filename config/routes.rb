@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  post '/homes/guest_sign_in', to: 'homes#new_guest'
+
   resources :users, only: [:show, :edit, :update]
   resources :notifications, only: [:index]
   delete '/notifications' => 'notifications#destroy_all', as: "destroy_all_notification"

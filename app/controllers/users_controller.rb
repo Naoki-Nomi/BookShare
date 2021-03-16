@@ -7,6 +7,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user.email = ""
+      redirect_to user_path(@user), notice: 'ゲストユーザーは編集できません'
+    end
   end
 
   def update
@@ -20,8 +23,10 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.find(params[:id])
-    unless @user.id == current_user.id
+    if @user.id != current_user.id
       redirect_to root_path
+    elsif @user.email == "guest@example.com"
+      redirect_to user_path, notice: 'ゲストユーザーは編集できません'
     end
   end
 

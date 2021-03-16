@@ -1,6 +1,9 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col text-center mupage-image mt-5">
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", size: "200x150"  %>
       <p class="mb-0 font-weight-bold"><%= @user.nickname %></p>
       <p>

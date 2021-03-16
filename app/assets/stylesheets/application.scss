@@ -39,6 +39,8 @@ li {
   font-style: italic;
 }
 
+
+
 .card-header-register {
   font-weight: bold;
   background-color: #dddddd;
@@ -76,6 +78,49 @@ li {
   bottom: 100px;
   right: 50px;
   font-style: italic;
+}
+
+.btn-info {
+  border: 0;
+  width: 140px;
+}
+
+.sp_br {
+  display: none;
+}
+
+.btn-info:first-child {
+  background-color: #47763c;
+}
+
+.btn-info:nth-child(2) {
+  background-color: #00a0dc;
+}
+
+.btn-info:last-child {
+  background-color: #f5a500;
+}
+
+.top-outline {
+  position: relative;
+  color: #158b2b;
+  font-size: 50px;
+  padding: 10px 0;
+}
+
+.top-outline:before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 280px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #a6ddb0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .top-outline-sentence {
@@ -157,6 +202,19 @@ li {
   color: gold;
 }
 
+@media screen and (max-width : 768px){
+	.top_quote {
+	  font-size: 12px;
+    position: absolute;
+    bottom: 100px;
+    right: 5px;
+  }
+
+  #navbarNavDropdown li {
+    text-align: center;
+  }
+}
+
 @media screen and (max-width : 480px){
 	.display-1 {
 		font-size: 60px;
@@ -171,6 +229,20 @@ li {
     position: absolute;
     bottom: 100px;
     right: 5px;
+  }
+
+  .sp_br {
+    display: inline-block;
+  }
+
+  .top-outline {
+    font-size: 33px;
+  }
+
+  .top-outline:before {
+    top: -9px;
+    width: 230px;
+    height: 80px;
   }
 
   #error_explanation {
@@ -222,4 +294,15 @@ li {
   .contact {
     font-size: 11px;
   }
+}
+
+@media screen and (max-width : 375px){
+	.top-merit-pic {
+	  width: 240px;
+	  height: 200px;
+	}
+	.top-how-pic {
+	  width: 240px;
+	  height: 160px;
+	}
 }

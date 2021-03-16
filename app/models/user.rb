@@ -26,6 +26,12 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: 'visited_id', dependent: :destroy
 
+  def self.guest
+    find_or_create_by!(nickname: 'ゲスト', email: 'guest@example.com') do |user|
+    user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
