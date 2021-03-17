@@ -37,8 +37,9 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
-  get '/book/:user_id/detail' => 'books#detail', as: "detail"
-  resources :books do
+  get '/books/:user_id/detail' => 'books#detail', as: "detail"
+  get '/books/:user_id/index' => 'books#index', as: "books_record"
+  resources :books, except: [:index] do
     get :search, on: :collection
   end
 
