@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -47,7 +46,7 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to books_path(user_id: current_user.id), class: 'nav-link text-dark ml-1' do %>
+                <%= link_to books_record_path(user_id: current_user.id), class: 'nav-link text-dark ml-1' do %>
                   <i class="fas fa-book-open"></i> 読書一覧
                 <% end %>
               </li>
