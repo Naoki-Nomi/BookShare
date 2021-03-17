@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-11 col-lg-10 mx-auto">
-      <h4 class="col-2 ml-0 ml-md-2 ml-lg-5 page-title">読書一覧</h4>
+    <div class="col-12 mx-auto">
+      <h4 class="col-6 col-md-3 col-lg-2 ml-0 ml-md-2 ml-lg-5 page-title">読書一覧</h4>
       <div class="text-right mb-3 mb-md-0">
         <%= link_to "グラフで確認", detail_path(user_id: params[:user_id]), class: 'btn btn-success' %>
       </div>
@@ -19,8 +19,8 @@
         <%= f.hidden_field :user_id, :value => params[:user_id] %>
       <% end %>
       <%= render 'books/user', user: @user, title: "登録一覧" %>
-      <table class="table table-hover mt-2 book_index">
-        <thead>
+      <table class="table table-hover mt-2 book-index">
+        <thead class="font-weight-bold book-index-head">
           <tr>
             <td>著者</td>
             <td>題名</td>
@@ -31,17 +31,10 @@
         <tbody>
           <% books.each do |book| %>
           <tr>
-            <% if book.user == current_user %>
-              <td><%= link_to book.author, book_path(book), class: "text-dark" %></td>
-              <td><%= link_to book.book_title, book_path(book), class: "text-dark" %></td>
-              <td><%= link_to book.genre.name, book_path(book), class: "text-dark" %></td>
-              <td><%= link_to book.read_date, book_path(book), class: "text-dark" %></td>
-            <% else %>
-              <td class="text-dark"><%= book.author %></td>
-              <td class="text-dark"><%= book.book_title %></td>
-              <td class="text-dark"><%= book.genre.name %></td>
-              <td class="text-dark"><%= book.read_date %></td>
-            <% end %>
+            <td><%= link_to book.author, book_path(book), class: "text-dark" %></td>
+            <td><%= link_to book.book_title, book_path(book), class: "text-dark" %></td>
+            <td><%= link_to book.genre.name, book_path(book), class: "text-dark" %></td>
+            <td><%= link_to book.read_date, book_path(book), class: "text-dark" %></td>
           </tr>
           <% end %>
         </tbody>

@@ -21,19 +21,19 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
                 </div>
-                  <%= f.text_field :author, autofocus: true, class: 'form-control', placeholder: "本の著者（空白なし）" %>
+                  <%= f.text_field :author, autofocus: true, class: 'form-control', placeholder: "著者（例: 夏目漱石）" %>
               </div>
               <div class="input-group input-group-lg mt-2 mb-2">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
                 </div>
-                <%= f.text_field :book_title, autofocus: true, class: 'form-control', placeholder: "本のタイトル" %>
+                <%= f.text_field :book_title, autofocus: true, class: 'form-control', placeholder: "題名（例: こころ）" %>
               </div>
               <div class="input-group input-group-lg mt-2 mb-2">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-list"></i></span>
                 </div>
-                <%= f.select :genre_id, options_from_collection_for_select(genres, :id, :name), { prompt: "本のジャンル" }, { class: 'form-control text-muted' } %>
+                <%= f.select :genre_id, options_from_collection_for_select(genres, :id, :name), { prompt: "本のジャンルを選択" }, { class: 'form-control text-muted' } %>
               </div>
                <div class="input-group input-group-lg mt-1 mb-2">
                 <div class="input-group-prepend">
@@ -50,7 +50,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-pen"></i></span>
             </div>
-              <%= f.text_area :note, autofocus: true, size: "20x5", class: 'form-control', placeholder: "登録する本のメモ（※任意）" %>
+              <%= f.text_area :note, autofocus: true, size: "20x5", class: 'form-control', placeholder: "登録する本のメモ" %>
           </div>
               <%= f.submit "登録", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
         <% end %>

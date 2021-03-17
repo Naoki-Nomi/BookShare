@@ -1,22 +1,16 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12 col-md-11 col-lg-8 mx-auto">
+      <h4 class="col-7 col-md-4 col-lg-3 page-title">記録詳細</h4>
       <div class="row">
         <div class="ml-auto">
           <%= link_to "編集する", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %>
           <%= link_to "削除する", book_path(@book.id), method: :delete, class: 'btn btn-sm btn-danger' %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-7 col-md-3 text-center">
-          <%= link_to user_path(@book.user) do %>
-            <%= attachment_image_tag @book.user, :profile_image, fallback: "no_image.png", size:'60x40', class: 'mt-2' %>
-            <p class="pb-0 mb-0 text-dark text-center small"><%= @book.user.nickname %>さんの投稿一覧</p>
-          <% end %>
-        </div>
-      </div>
-      <table class="table table-hover mt-2 book_index">
-        <thead>
+      <%= render 'books/user', user: @book.user, title: "登録一覧" %>
+      <table class="table table-hover mt-2 book-index">
+        <thead class="font-weight-bold book-index-head">
           <tr>
             <td>著者</td>
             <td>題名</td>

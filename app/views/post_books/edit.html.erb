@@ -22,30 +22,30 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
                   </div>
-                  <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "投稿する本の著者" %>
+                  <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "著者（例: 夏目漱石）" %>
                 </div>
                 <div class="input-group input-group-lg mt-2 mb-2">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
                   </div>
-                  <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "投稿する本のタイトル" %>
+                  <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "題名（例: こころ）" %>
                 </div>
               <div class="input-group input-group-lg mt-2 mb-2">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-list"></i></span>
                 </div>
-                <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンル" }, { class: 'form-control' } %>
+                <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "本のジャンル" }, { class: 'form-control' } %>
               </div>
             </div>
             <div class="col-lg-4 mt-lg-5 d-none d-lg-block">
-              <%= attachment_image_tag @post_book, :post_book_image, :fill, 180, 130, fallback: "no_image_book.jpg", size:'160x180' %>
+              <%= attachment_image_tag @post_book, :post_book_image, :fill, 180, 130, fallback: "no_image_book.jpg", size:'140x170' %>
             </div>
           </div>
           <div class="input-group input-group-lg mt-1 mb-2">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-heading"></i></span>
             </div>
-            <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "タイトル" %>
+            <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "投稿内容のタイトル" %>
           </div>
           <div class="input-group input-group-lg mb-2">
             <div class="input-group-prepend">

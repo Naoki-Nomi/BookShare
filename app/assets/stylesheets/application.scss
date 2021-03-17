@@ -223,6 +223,10 @@ li {
   color: gold;
 }
 
+.book-index-head {
+  background-color: #EBFFE5;
+}
+
 @media screen and (max-width : 768px){
 	.top_quote {
 	  font-size: 12px;
@@ -286,7 +290,7 @@ li {
   height: 50px;
 }
 
-  .book_index {
+  .book-index {
   font-size: 10px;
 }
 
@@ -312,9 +316,34 @@ li {
     height: 30px;
   }
 
+  .admin-contact {
+    font-size: 10px;
+  }
+
   .contact {
     font-size: 11px;
   }
+
+  .post-book-show-author {
+    font-size: 20px;
+  }
+
+  .post-book-show-title {
+    font-size: 20px;
+  }
+
+  .post-book-user {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    text-align: left;
+  }
+
+  .post-book-user-nickname {
+    font-size: 5px;
+    text-align: left;
+  }
+
 }
 
 @media screen and (max-width : 375px){

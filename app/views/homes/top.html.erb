@@ -36,7 +36,7 @@
           ◆ <span class="top-outline-sentence">BookShareを活用するメリットは？</span>
             <ul>
               <li class="h6">
-                −論理的思考力や多面的な知見を身につけることができます。
+                −論理的思考力や多面的な考え方を身につけることができます。
                  <%= link_to "BookShareのメリット", root_path(anchor: 'merit') %>をご参照ください。
               </li>
             </ul>
@@ -110,25 +110,23 @@
   <div class="top-how mt-5">
     <div class="text-center">
       <h1 class="font-weight-bold mt-3 top-outline", id="use">BookShareの使い方</h1>
-      <p class="small mt-4">※サービスのご利用には、<%= link_to '新規登録', new_user_registration_path %>が必要です。</p>
+      <p class="small mt-4">※サービスのご利用には、<u><%= link_to '新規登録', new_user_registration_path %></u>が必要です。</p>
     </div>
     <div class="col-lg-12 border border-dark pb-3 mx-2 mx-md-0">
       <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本の感想や考察の共有</span></div>
       <div class="container">
         <div class="row mt-4">
           <div class="col-lg-6 text-center">
-            <h2>①</h2>
             <p class="mt-2">
-              ページ先頭の<i class="fas fa-feather-alt"></i><strong>新規登録</strong>をクリック。<br>
+              ① ページ先頭の<i class="fas fa-feather-alt"></i><strong>新規投稿</strong>をクリック。<br>
               内容を記入し、投稿しましょう！
             </p>
             <%= image_tag "post-book-image.png", size:'320x250', class: 'top-how-pic' %><br>
           </div>
           <div class="col-lg-6 text-center">
-            <h2 class="mt-3 mt-lg-0">②</h2>
             <p class="mt-2">
-              投稿すると一覧に表示されます。<br>
-              <u>投稿には <i class="fas fa-comments"></i><strong>コメント</strong>や <i class="fas fa-thumbs-up"></i><strong>いいね</strong>ができます！</u>
+              ② 投稿すると一覧に表示されます。<br>
+              <u>投稿には<strong>コメント</strong><i class="fas fa-comments"></i>・<strong>いいね</strong><i class="fas fa-thumbs-up"></i>ができます！</u>
             </p>
             <%= image_tag "book-index-image.png", size:'320x250', class: 'top-how-pic' %><br>
           </div>
@@ -138,17 +136,15 @@
       <div class="container">
         <div class="row mt-4">
           <div class="col-lg-6 text-center">
-            <h2>①</h2>
             <p class="mt-2">
-              ページ先頭の<i class="fas fa-bookmark"></i><strong>読書登録</strong>をクリック。<br>
+              ① ページ先頭の<i class="fas fa-bookmark"></i><strong>読書記録</strong>をクリック。<br>
               本の情報を記入し、登録してください！
             </p>
             <%= image_tag "book-image.png", size:'320x250', class: 'top-how-pic' %><br>
           </div>
           <div class="col-lg-6 text-center">
-            <h2 class="mt-3 mt-lg-0">②</h2>
             <p class="mt-2">
-              <u>読書記録は <i class="fas fa-signal"></i><strong>グラフ</strong>で確認することができます。</u><br>
+              ② <u>読書記録は<strong>グラフ</strong><i class="fas fa-signal"></i>で確認することができます。</u><br>
             　どんどん本を読んで、登録してみてください！
             </p>
             <%= image_tag "book-graph-image.png", size:'340x200', class: 'top-how-pic' %><br>

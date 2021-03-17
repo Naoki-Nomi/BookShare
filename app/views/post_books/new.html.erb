@@ -23,24 +23,24 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
                 </div>
-                <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "投稿する本の著者（空白なし）" %>
+                <%= f.text_field :post_book_author, autofocus: true, class: 'form-control', placeholder: "著者（例: 夏目漱石）" %>
               </div>
               <div class="input-group input-group-lg mt-2 mb-2">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-book-reader"></i></span>
                 </div>
-                <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "投稿する本の題名" %>
+                <%= f.text_field :post_book_title, autofocus: true, class: 'form-control', placeholder: "題名（例: こころ）" %>
               </div>
               <div class="input-group input-group-lg mt-2 mb-2">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-list"></i></span>
                 </div>
-                <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "投稿する本のジャンルを選択" }, { class: 'form-control text-muted' } %>
+                <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { prompt: "本のジャンルを選択" }, { class: 'form-control text-muted' } %>
               </div>
             </div>
             <div class="col-lg-4 mt-3 d-none d-lg-block">
               <p class="small mt-lg-5 mb-1">下記の写真は参考例です</p>
-              <%=image_tag "no_image_book.jpg", size:'180x150' %>
+              <%=image_tag "no_image_book.jpg", size:'120x140' %>
             </div>
           </div>
           <div class="input-group input-group-lg mt-1 mb-2">

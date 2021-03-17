@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-12 col-md-8 col-lg-5 mx-auto">
+    <div class="col-11 col-md-8 col-lg-5 mx-auto">
       <div class="text-danger font-weight-bold mb-3"><%= flash[:none] %></div>
         <div class="text-danger font-weight-bold mb-3"><%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %></div>
         <div class="text-danger font-weight-bold mb-3"><%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %></div>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="card mx-auto text-center col-12 col-md-8 col-lg-5 p-0 mt-5 shadow">
+    <div class="card mx-auto text-center col-11 col-md-8 col-lg-5 p-0 mt-5 shadow">
       <h3 class="card-header-register py-2">
         ログイン
       </h3>

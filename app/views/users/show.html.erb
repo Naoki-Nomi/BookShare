@@ -1,4 +1,7 @@
 <div class="container mt-5">
+  <h4 class="col-md-7 col-lg-6 col-xl-5 offset-lg-3 page-title text-center">
+    <%= @user.nickname %>さんのページ
+  </h4>
   <div class="row">
     <div class="col text-center mupage-image mt-5">
       <% if flash[:notice] %>
@@ -57,7 +60,7 @@
             </li>
             <li class="list-group-item border-0 py-2 ml-lg-4 px-0">
               <%= link_to books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' do %>
-                <i class="fas fa-book-open"></i> 読書記録を確認する
+                <i class="fas fa-book-open"></i> 読書一覧を確認する
               <% end %>
             </li>
             <li class="list-group-item border-0 py-2 ml-lg-4 px-0">
@@ -74,14 +77,14 @@
               <% end %>
             </li>
           <% else %>
-            <li class="list-group-item border-0 py-1">
+            <li class="list-group-item border-0 py-2 ml-lg-4 px-0">
               <%= link_to post_books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' do %>
                 <i class="fas fa-share-square"></i> <%= @user.nickname %>さんの投稿一覧を閲覧する
               <% end %>
             </li>
-            <li class="list-group-item border-0 py-1">
+            <li class="list-group-item border-0 py-2 ml-lg-4 px-0">
               <%= link_to books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' do %>
-                <i class="fas fa-book-open"></i> <%= @user.nickname %>さんの読書記録を閲覧する
+                <i class="fas fa-book-open"></i> <%= @user.nickname %>さんの読書一覧を閲覧する
               <% end %>
             </li>
           <% end %>

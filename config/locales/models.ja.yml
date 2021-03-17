@@ -5,6 +5,7 @@ ja:
       book: 読書登録
       contact: お問い合わせ
       genre: ジャンル
+      comment: コメント
     attributes:
       post_book:
         post_book_author: 著者名
@@ -23,3 +24,5 @@ ja:
         content: お問い合わせ内容
       genre:
         name: ジャンル名
+      comment:
+        comment_content: コメント内容

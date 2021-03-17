@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @book = Book.new
     @genres = Genre.all
@@ -38,11 +38,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    if @book.user_id == current_user.id # 登録の詳細画面は登録者のみ確認可能
-      render :show
-    else
-      redirect_to books_path(user_id: @book.user_id, book_sort: 0)
-    end
   end
 
   def edit
