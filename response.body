@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/BookShare/spec/system/02_after_login_spec.rb:277 :
+
+    [1;34m272[0m:         find([31m[1;31m"[0m[31moption[value='1'][1;31m"[0m[31m[0m).select_option
+    [1;34m273[0m:       [32mend[0m
+    [1;34m274[0m: 
+    [1;34m275[0m:       it [31m[1;31m'[0m[31m投稿画面にリダイレクトされ、エラーが表示される[1;31m'[0m[31m[0m [32mdo[0m
+    [1;34m276[0m:         binding.pry
+ => [1;34m277[0m:         click_button [31m[1;31m'[0m[31m投稿[1;31m'[0m[31m[0m
+    [1;34m278[0m:         expect(current_path).to eq [31m[1;31m'[0m[31m/post_books/new[1;31m'[0m[31m[0m
+    [1;34m279[0m:         expect(current_path).to have_content [31m[1;31m'[0m[31mを入力してください[1;31m'[0m[31m[0m
+    [1;34m280[0m:       [32mend[0m
+    [1;34m281[0m:     [32mend[0m
+    [1;34m282[0m:   [32mend[0m
+

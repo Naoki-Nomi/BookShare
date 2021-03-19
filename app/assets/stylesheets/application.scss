@@ -101,6 +101,10 @@ li {
   background-color: #f5a500;
 }
 
+.top {
+  margin-top: 100px;
+}
+
 .top-outline {
   position: relative;
   color: #158b2b;
@@ -199,6 +203,7 @@ li {
   display: flex;
   padding: 0;
   margin-left: 140px;
+  font-weight: bold;
 }
 
 .pagination>li>a {

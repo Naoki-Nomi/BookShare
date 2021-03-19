@@ -12,15 +12,15 @@
     <p class="small">アイラ・ガーシュイン</p>
   </div>
 </div>
-<div class="container p-0">
+<div class="container p-0 my-5">
   <div class="top-btn text-center">
     <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-info mx-3 mb-1' %><br class="sp_br">
     <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-info mx-3  mb-1' %><br class="sp_br">
     <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class: 'btn btn-info mx-3 mb-1' %>
   </div>
-  <div class="top-background mt-5">
+  <div class="top top-background">
     <div class="text-center">
-      <h1 class="font-weight-bold mt-3 top-outline">BookShareとは？</h1>
+      <h1 class="font-weight-bold mb-3 top-outline">BookShareとは？</h1>
     </div>
     <div class="container">
       <ul class="list-group h3">
@@ -62,9 +62,9 @@
       </ul>
     </div>
   </div>
-  <div class="top-merit mt-5">
+  <div class="top top-merit">
     <div class="text-center">
-      <h1 class="font-weight-bold mt-3 top-outline", id="merit" >BookShareのメリット</h1>
+      <h1 class="font-weight-bold top-outline", id="merit" >BookShareのメリット</h1>
     </div>
     <div class="card-deck mt-5">
       <div class="row row-eq-height">
@@ -107,10 +107,10 @@
       </div>
     </div>
   </div>
-  <div class="top-how mt-5">
+  <div class="top top-how">
     <div class="text-center">
       <h1 class="font-weight-bold mt-3 top-outline", id="use">BookShareの使い方</h1>
-      <p class="small mt-4">※サービスのご利用には、<u><%= link_to '新規登録', new_user_registration_path %></u>が必要です。</p>
+      <p class="small mt-4 mb-4">※サービスのご利用には、<u><%= link_to '新規登録', new_user_registration_path %></u>が必要です。</p>
     </div>
     <div class="col-lg-12 border border-dark pb-3 mx-2 mx-md-0">
       <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本の感想や考察の共有</span></div>

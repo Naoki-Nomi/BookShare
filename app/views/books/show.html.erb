@@ -4,8 +4,10 @@
       <h4 class="col-7 col-md-4 col-lg-3 page-title">記録詳細</h4>
       <div class="row">
         <div class="ml-auto">
+        <% if @book.user == current_user %>
           <%= link_to "編集する", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %>
           <%= link_to "削除する", book_path(@book.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+        <% end %>
         </div>
       </div>
       <%= render 'books/user', user: @book.user, title: "登録一覧" %>
