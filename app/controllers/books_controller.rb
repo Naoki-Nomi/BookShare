@@ -46,7 +46,7 @@ class BooksController < ApplicationController
     if @book.user_id == current_user.id
       render :edit
     else
-      redirect_to books_path(user_id: @book.user_id, book_sort: 0)
+      redirect_to  books_path(user_id: @book.user_id, book_sort: "0")
     end
   end
 

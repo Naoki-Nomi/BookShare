@@ -38,8 +38,7 @@ Rails.application.routes.draw do
   end
 
   get '/books/:user_id/detail' => 'books#detail', as: "detail"
-  get '/books/:user_id/index' => 'books#index', as: "books_record"
-  resources :books, except: [:index] do
+  resources :books do
     get :search, on: :collection
   end
 
