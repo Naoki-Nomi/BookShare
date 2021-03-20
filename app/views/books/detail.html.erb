@@ -12,7 +12,7 @@
         <%= link_to "年間で表示", detail_path(period: 1), class: "dropdown-item" %>
       </div>
       <div class="offset-md-3 offset-lg-0 mt-3">
-        <%= line_chart @books_number, width: "300px", height: "400px", curve: false, messages: {empty: "No data"}, label: "Value" %>
+        <%= line_chart @books_number, id: "amount_chart", width: "300px", height: "400px", curve: false, messages: {empty: "No data"}, label: "Value" %>
       </div>
     </div>
     <div class="col-lg-4 text-center mt-4">
@@ -26,13 +26,13 @@
         <%= link_to "全ての著者を表示", detail_path(author_number: 1), class: "dropdown-item" %>
       </div>
       <div class="offset-md-3 offset-lg-0 mt-3">
-        <%= bar_chart @author_for_graph, width: "300px", height: "400px", messages: {empty: "No data"}, label: "Value" %>
+        <%= bar_chart @author_for_graph, id: "author_chart", width: "300px", height: "400px", messages: {empty: "No data"}, label: "Value" %>
       </div>
     </div>
     <div class="col-11 col-lg-4 text-center mt-4 ml-3 ml-md-0">
       <h5 class="font-weight-bold mr-lg-0 ml-lg-4 mr-xl-4 ml-xl-0">ジャンル</h5>
       <div class="offset-md-3 offset-lg-0 mt-3">
-        <%= pie_chart @genre_for_graph, width: "320px", height: "400px", legend: "bottom", messages: {empty: "No data"}, label: "Value", class: 'ml-5' %>
+        <%= pie_chart @genre_for_graph, id: "genre_chart", width: "320px", height: "400px", legend: "bottom", messages: {empty: "No data"}, label: "Value", class: 'ml-5' %>
       </div>
     </div>
   </div>

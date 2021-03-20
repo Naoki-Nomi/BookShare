@@ -45,6 +45,9 @@ class PostBooksController < ApplicationController
   def edit
     @post_book = PostBook.find(params[:id])
     @genres = Genre.all
+    unless @post_book.user == current_user
+      redirect_to post_book_path(@post_book)
+    end
   end
 
   def update

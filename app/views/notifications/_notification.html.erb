@@ -1,5 +1,6 @@
 <% visitor = notification.visitor %>
-<div class="form-inline">
+<% visited = notification.visited %>
+<div class="form-inline my-2">
   <span>
     <%= link_to user_path(visitor) do %>
       <%= attachment_image_tag visitor, :profile_image, fallback: "no_image.png", size: "60x40", class: 'notification-picture' %>
@@ -9,12 +10,12 @@
 
     <% case notification.action %>
     <% when 'follow' %>
-      <%= "あなたをフォローしました" %>
+      <%= "#{visited.nickname}さんをフォローしました" %>
     <% when 'favorite' %>
-      <%= link_to "あなたの投稿", post_book_path(notification.post_book) %>
+      <%= link_to "#{visited.nickname}さんの投稿", post_book_path(notification.post_book) %>
       <%= "にいいねしました" %>
     <% when 'comment' %>
-      <%= link_to "あなたの投稿", post_book_path(notification.post_book) %>
+      <%= link_to "#{visited.nickname}さんの投稿", post_book_path(notification.post_book) %>
       <%= "にコメントしました" %>
     <% end %>
   </span>
