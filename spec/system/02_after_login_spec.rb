@@ -11,7 +11,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
   let!(:other_book) { create(:book, user: other_user, genre: genre) }
   let!(:post_book) { create(:post_book, user: user,  genre: genre) }
   let!(:other_post_book) { create(:post_book, user: other_user, genre: genre) }
-  let!(:contact) { create(:contact) }
 
 
   before do
@@ -622,7 +621,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
     end
 
-    context "新規投稿機能(失敗)のテスト" do
+    context "読書記録機能(失敗)のテスト" do
       before do
         fill_in 'book[author]', with: ''
         fill_in 'book[book_title]', with: ''
@@ -882,6 +881,120 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
       it 'リダイレクト先が読書一覧画面になっている' do
         expect(current_path).to eq '/books'
+      end
+    end
+  end
+
+  describe '読書記録グラフ画面の確認' do
+    before do
+      visit detail_path(user_id: user)
+    end
+
+    it 'リンク先の確認' do
+      expect(current_path).to eq "/books/#{user.id}/detail"
+    end
+    it '年間で表示のリンクがあるか' do
+      expect(page).to have_link '年間で表示', href: detail_path(user_id: user, period: 1)
+    end
+    it '月間で表示のリンクがあるか' do
+      expect(page).to have_link '月間で表示', href: detail_path(user_id: user)
+    end
+    it '週間で表示のリンクがあるか' do
+      expect(page).to have_link '週間で表示', href: detail_path(user_id: user, period: 0)
+    end
+    it 'トップ5名を表示のリンクがあるか' do
+      expect(page).to have_link 'トップ5名を表示', href: detail_path(user_id: user)
+    end
+    it 'トップ10名を表示のリンクがあるか' do
+      expect(page).to have_link 'トップ10名を表示', href: detail_path(user_id: user, author_number: 0)
+    end
+    it '全ての著者を表示のリンクがあるか' do
+      expect(page).to have_link '全ての著者を表示', href: detail_path(user_id: user, author_number: 1)
+    end
+    it '読書数を示すグラフがあるか' do
+      expect(page).to have_selector "#amount_chart"
+    end
+    it '著者名を示すグラフがあるか' do
+      expect(page).to have_selector "#author_chart"
+    end
+    it 'ジャンル名を示すグラフがあるか' do
+      expect(page).to have_selector "#genre_chart"
+    end
+  end
+
+  describe 'お問い合わせ機能の確認' do
+    before do
+      click_link 'お問い合わせ'
+    end
+
+    context 'お問い合わせ画面の確認' do
+      it 'リンク先の確認' do
+        expect(current_path).to eq '/contacts/new'
+      end
+      it 'フォームの確認：名前' do
+        expect(page).to have_field 'contact[name]'
+      end
+      it 'フォームの確認：メールアドレス' do
+        expect(page).to have_field 'contact[email]'
+      end
+      it 'フォームの確認：お問い合わせ内容' do
+        expect(page).to have_field 'contact[content]'
+      end
+    end
+
+    describe 'お問い合わせのテスト（成功）' do
+      before do
+        fill_in 'contact[name]', with: '田中太郎'
+        fill_in 'contact[email]', with: 'tanaka@tarou'
+        fill_in 'contact[content]', with: 'テスト内容'
+        click_button 'ご入力内容を確認'
+      end
+
+      context 'お問い合わせ確認画面の確認' do
+        it 'リンク先の確認' do
+          expect(current_path).to eq '/contact/confirm'
+        end
+        it '名前に値が設定されているか' do
+          expect(page).to have_content '田中太郎'
+        end
+        it 'メールアドレスに値が設定されているか' do
+          expect(page).to have_content 'tanaka@tarou'
+        end
+        it 'お問い合わせ内容に値が設定されているか' do
+          expect(page).to have_content 'テスト内容'
+        end
+        it '内容を確定するボタンが表示されているか' do
+          expect(page).to have_link "内容を確定する"
+        end
+      end
+
+      context 'お問い合わせ機能のテスト' do
+        it 'お問い合わせ内容が正しく保存されている' do
+          expect{ click_link "内容を確定する" }.to change{ Contact.count }.by(1)
+        end
+        it 'お問い合わせ投稿後、サンクス画面にリダイレクトされる' do
+          click_link "内容を確定する"
+          expect(current_path).to eq "/contact/thanks"
+        end
+      end
+    end
+
+    describe 'お問い合わせのテスト（失敗）' do
+      before do
+        fill_in 'contact[name]', with: ''
+        fill_in 'contact[email]', with: ''
+        fill_in 'contact[content]', with: ''
+        click_button 'ご入力内容を確認'
+      end
+
+      it 'お名前を入力してくださいのエラーが表示されているか' do
+        expect(page).to have_content "お名前を入力してください"
+      end
+      it 'メールアドレスを入力してくださいのエラーが表示されているか' do
+        expect(page).to have_content "メールアドレスを入力してください"
+      end
+      it 'お問い合わせ内容を入力してくださいのエラーが表示されているか' do
+        expect(page).to have_content "お問い合わせ内容を入力してください"
       end
     end
   end
