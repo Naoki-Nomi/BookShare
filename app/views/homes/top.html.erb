@@ -112,45 +112,235 @@
       <h1 class="font-weight-bold mt-3 top-outline", id="use">BookShareの使い方</h1>
       <p class="small mt-4 mb-4">※サービスのご利用には、<u><%= link_to '新規登録', new_user_registration_path %></u>が必要です。</p>
     </div>
-    <div class="col-lg-12 border border-dark pb-3 mx-2 mx-md-0">
-      <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本の感想や考察の共有</span></div>
-      <div class="container">
-        <div class="row mt-4">
-          <div class="col-lg-6 text-center">
-            <p class="mt-2">
-              ① ページ先頭の<i class="fas fa-feather-alt"></i><strong>新規投稿</strong>をクリック。<br>
-              内容を記入し、投稿しましょう！
-            </p>
-            <%= image_tag "post-book-image.png", size:'320x250', class: 'top-how-pic' %><br>
-          </div>
-          <div class="col-lg-6 text-center">
-            <p class="mt-2">
-              ② 投稿すると一覧に表示されます。<br>
-              <u>投稿には<strong>コメント</strong><i class="fas fa-comments"></i>・<strong>いいね</strong><i class="fas fa-thumbs-up"></i>ができます！</u>
-            </p>
-            <%= image_tag "book-index-image.png", size:'320x250', class: 'top-how-pic' %><br>
+    <div class="accordion mt-5" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fas fa-edit"></i> 新規会員登録する
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① ページ先頭の<i class="fas fa-user-plus"></i><strong>新規登録</strong>をクリック。<br>
+                    ニックネームなどを記入し、新規登録しましょう！
+                  </p>
+                  <%= image_tag "signup-image.png", size:'300x250', class: 'top-how-pic' %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② ご登録後、<i class="fas fa-home"></i> <strong>マイページ</strong>に遷移します！
+                  </p>
+                  <%= image_tag "mypage-image.png", size:'290x250', class: 'top-how-pic mt-3' %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="h4 mt-4 ml-2 font-weight-bold">◆ <span class="instruction_title">読んだ本を記録</span></div>
-      <div class="container">
-        <div class="row mt-4">
-          <div class="col-lg-6 text-center">
-            <p class="mt-2">
-              ① ページ先頭の<i class="fas fa-bookmark"></i><strong>読書記録</strong>をクリック。<br>
-              本の情報を記入し、登録してください！
-            </p>
-            <%= image_tag "book-image.png", size:'320x250', class: 'top-how-pic' %><br>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg collapsed text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <i class="fas fa-edit"></i> メールアドレスや、プロフィール画像を変更する
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① マイページの<i class="fas fa-edit"></i> <strong>プロフィールを編集する</strong><br>
+                    をクリックしてください！
+                  </p>
+                  <%= image_tag "mypage-image-profile.png", size:'290x250', class: 'top-how-pic' %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② 変更事項を記入し、<br>
+                    編集内容を保存しましょう！
+                  </p>
+                  <%= image_tag "profile-edit-image.png", size:'320x250', class: 'top-how-pic' %>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-6 text-center">
-            <p class="mt-2">
-              ② <u>読書記録は<strong>グラフ</strong><i class="fas fa-signal"></i>で確認することができます。</u><br>
-            　どんどん本を読んで、登録してみてください！
-            </p>
-            <%= image_tag "book-graph-image.png", size:'340x170', class: 'top-how-pic' %><br>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg collapsed text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <i class="fas fa-edit"></i> 本の感想や考察を投稿する
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① ページ先頭の<i class="fas fa-feather-alt"></i><strong>新規投稿</strong>をクリック。<br>
+                    内容を記入し、投稿しましょう！
+                  </p>
+                  <%= image_tag "post-book-image.png", size:'320x250', class: 'top-how-pic' %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② 投稿すると<i class="fas fa-copy"></i> <strong>投稿一覧</strong>に表示されます！<br>
+                      投稿は、キーワードやジャンル名で検索できます！
+                  </p>
+                  <%= image_tag "book-index-image.png", size:'320x250', class: 'top-how-pic' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg collapsed text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <i class="fas fa-edit"></i> 投稿にいいね・コメントする
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① <u>投稿には<strong>コメント</strong><i class="fas fa-comments"></i>・<strong>いいね</strong><i class="fas fa-thumbs-up"></i>ができます！</u><br>
+                    気になる投稿には、いいね・コメントしてみて下さい！
+                  </p>
+                  <%= image_tag "favorite-goog-image.png", size:'320x250', class: 'top-how-pic' %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② いいねした投稿は<strong>いいね投稿数</strong>にカウントされ、<br>
+                    リンク先の一覧で確認することができます！
+                  </p>
+                  <%= image_tag "mypage-favorite.png", size:'290x250', class: 'top-how-pic' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFive">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg collapsed text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              <i class="fas fa-edit"></i> 読んだ本を記録する
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① ページ先頭の<i class="fas fa-bookmark"></i> <strong>読書記録</strong>をクリック。<br>
+                    本の情報を記入し、登録してください！
+                  </p>
+                  <%= image_tag "book-image.png", size:'320x250', class: 'top-how-pic' %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② 登録すると <i class="fas fa-book-open"></i> <strong>読書一覧</strong>に表示されます。<br>
+                    一覧ではキーワードやジャンル名で検索できます！
+                  </p>
+                  <%= image_tag "books-image.png", size:'350x220', class: 'top-how-pic' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingSix">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg collapsed text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              <i class="fas fa-edit"></i> 読書記録をグラフで確認する
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① ページ先頭の<i class="fas fa-book-open"></i> <strong>読書一覧</strong>をクリックし、<br>
+                    <strong>グラフで確認</strong>を押してください。
+                  </p>
+                  <%= image_tag "books-graph-image.png", size:'350x220', class: 'top-how-pic' %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② <u>読書記録は<strong>グラフ</strong><i class="fas fa-signal"></i>で確認することができます。</u><br>
+                    どんどん本を読んで、登録してみてください！
+                  </p>
+                  <%= image_tag "book-graph-image.png", size:'350x160', class: 'top-how-pic' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingSeven">
+          <h5 class="mb-0">
+            <button class="btn btn-link btn-lg collapsed text-white text-left shadow-none small p-0 ml-3 pr-3", style="width: 100%", type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              <i class="fas fa-edit"></i> ユーザーをフォローする
+              <span class="float-right"><i class="fas fa-angle-down fa-lg"></i></span>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+           <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ① 他ユーザーのマイページ画面にある、<br>
+                    <strong>フォローする</strong>をクリックしてください！
+                  </p>
+                  <%= image_tag "follow-image.png", size:'290x250', class: 'top-how-pic' %><br>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <p class="mt-1">
+                    ② フォローしたユーザーは、マイページ上の<br>
+                    <strong>フォロー数</strong>にカウントされ、一覧で確認できます！
+                  </p>
+                  <%= image_tag "mypage-follow-image.png", size:'290x250', class: 'top-how-pic' %><br>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <span id="back">
+    <a href="#">
+      <%= image_tag "arrow.png" %>
+    </a>
+  </span>
 </div>

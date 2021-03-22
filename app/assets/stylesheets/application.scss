@@ -102,7 +102,7 @@ li {
 }
 
 .top {
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .top-outline {
@@ -131,8 +131,22 @@ li {
   background:linear-gradient(transparent 80%, #94c674 0%);
 }
 
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+#back img {
+  width: 50px;
+  opacity: 0.3;
+}
+
 .card-header {
   background-color: #47763c;
+}
+
+.accordion > .card > .card-header {
+  background-color: #499149;
 }
 
 .instruction_title {
