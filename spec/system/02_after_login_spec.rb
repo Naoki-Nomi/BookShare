@@ -339,10 +339,10 @@ describe '[STEP2] ユーザログイン後のテスト' do
         it 'フォームの確認：ジャンル' do
           expect(page).to have_field 'genre_id'
         end
-        it 'フォームの確認：検索ワード' do
+        it 'フォームの確認：日付' do
           expect(page).to have_field 'post_from'
         end
-        it 'フォームの確認：検索ワード' do
+        it 'フォームの確認：日付' do
           expect(page).to have_field 'post_to'
         end
         it '検索ボタンが表示されているか' do
