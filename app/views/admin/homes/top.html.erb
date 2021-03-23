@@ -14,6 +14,9 @@
         </div>
       </div>
       <% end %>
+      <% if @users.blank? %>
+        <p class="text-center mt-5">該当するデータはありません</p>
+      <% end %>
       <table class="table table-hover mt-4 admin-user text-nowrap">
         <thead>
           <tr>

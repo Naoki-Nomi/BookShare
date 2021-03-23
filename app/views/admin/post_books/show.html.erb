@@ -17,7 +17,7 @@
       </div>
       <div class="row">
         <div class="col-md-2 col-lg-2 p-0 text-center mt-2">
-          <%= link_to user_path(@post_book.user_id) do %>
+          <%= link_to edit_admin_user_path(@post_book.user_id) do %>
             <%= attachment_image_tag @post_book.user, :profile_image, fallback: "no_image.png", size:'100x70', class: 'post-book-user' %>
             <p class="text-dark mb-0 post-book-user-nickname"><%= @post_book.user.nickname %></p>
           <% end %>
