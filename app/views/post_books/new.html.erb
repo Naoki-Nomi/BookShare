@@ -53,7 +53,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-pen"></i></span>
             </div>
-              <%= f.text_area :content, autofocus: true, size: "20x8", class: 'form-control', placeholder: "投稿内容" %>
+              <%= f.text_area :content, 'data-provider': :summernote, autofocus: true, size: "20x8", class: 'form-control summernote', placeholder: "投稿内容" %>
           </div>
               <%= f.submit "投稿", class: 'btn btn-success btn-block btn-lg border-0 mt-3' %>
         <% end %>

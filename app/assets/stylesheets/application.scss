@@ -17,6 +17,7 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "summernote-bs4";
 
 
 * {
@@ -244,6 +245,10 @@ li {
 
 .book-index-head {
   background-color: #EBFFE5;
+}
+
+.note-toolbar {
+  background-color: #ffffff;
 }
 
 @media screen and (max-width : 768px){

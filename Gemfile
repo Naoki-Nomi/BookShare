@@ -87,4 +87,5 @@ group :production do
   gem 'mysql2'
 end
 
-gem "jquery-rails"
+gem 'simple_form'
+gem 'summernote-rails', '~> 0.8.10.0'

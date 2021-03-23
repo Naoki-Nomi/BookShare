@@ -19,6 +19,8 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+//= require summernote/summernote-bs4.min
+//= require summernote-init
 
 $(function() {
     var topBtn = $('#back a');
