@@ -24,10 +24,10 @@ class BooksController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     if params[:book_sort] == OTHER_USER_BOOK
       @books = Book.where(user_id: params[:user_id])
-      @books = @books.page(params[:page]).reverse_order.includes(:genre)
+      @books = @books.order(read_date: "DESC").page(params[:page]).includes(:genre)
     else
       @books = Book.where(user_id: current_user.id)
-      @books = @books.page(params[:page]).reverse_order.includes(:genre)
+      @books = @books.order(read_date: "DESC").page(params[:page]).includes(:genre)
     end
   end
 
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
     @books = Book.search(params[:user_id], params[:search], params[:genre_id], params[:read_from], params[:read_to])
-    @books = @books.page(params[:page]).reverse_order.includes(:genre)
+    @books = @books.order(read_date: "DESC").page(params[:page]).includes(:genre)
   end
 
   def show
