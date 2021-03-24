@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   post '/homes/guest_sign_in', to: 'homes#new_guest'
 
   resources :users, only: [:show, :edit, :update]
+  get '/users/page/:id/confirm' => 'users#confirm', as: "user_confirm"
+  patch '/users/page/:id/confirm' => 'users#quit', as: "user_quit"
+
   resources :notifications, only: [:index]
   delete '/notifications' => 'notifications#destroy_all', as: "destroy_all_notification"
 
-  get '/users/page/:id/confirm' => 'users#confirm', as: "user_confirm"
-  patch '/users/page/:id/confirm' => 'users#quit', as: "user_quit"
   resources :post_books do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
