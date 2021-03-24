@@ -17,15 +17,17 @@ class BooksController < ApplicationController
     end
   end
 
+  OTHER_USER_BOOK = "0"
+  # book_sortパラムスが0の時、他ユーザーの読書記録を表示。それ以外は、自分の読書記録を表示。
   def index
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
-    if params[:book_sort] == "0"
+    if params[:book_sort] == OTHER_USER_BOOK
       @books = Book.where(user_id: params[:user_id])
-      @books = @books.page(params[:page]).reverse_order
+      @books = @books.page(params[:page]).reverse_order.includes(:genre)
     else
       @books = Book.where(user_id: current_user.id)
-      @books = @books.page(params[:page]).reverse_order
+      @books = @books.page(params[:page]).reverse_order.includes(:genre)
     end
   end
 
@@ -33,7 +35,7 @@ class BooksController < ApplicationController
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
     @books = Book.search(params[:user_id], params[:search], params[:genre_id], params[:read_from], params[:read_to])
-    @books = @books.page(params[:page]).reverse_order
+    @books = @books.page(params[:page]).reverse_order.includes(:genre)
   end
 
   def show
@@ -66,22 +68,31 @@ class BooksController < ApplicationController
     redirect_to books_path(user_id: book.user_id)
   end
 
+  WEEK_READ_BOOK = "0"
+  YEAR_READ_BOOK = "1"
+  TEN_AUTHOR_NUMBER = "0"
+  ALL_AUTHOR_NUMBER = "1"
+
   def detail
     @books = Book.where(user_id: params[:user_id])
     @user = User.find_by(id: params[:user_id])
+
+    # ジャンルのグラフ用にジャンルごとの件数をハッシュ化
     @genre_for_graph = @books.joins(:genre).group("genres.name").count
 
-    if params[:period] == "0"
-      @books_number = @books.group_by_week(:read_date).count
-    elsif params[:period] == "1"
-      @books_number = @books.group_by_year(:read_date).count
+    # 読書数の経時変化（デフォルトでは月毎での表示）
+    if params[:period] == WEEK_READ_BOOK
+      @books_for_graph = @books.group_by_week(:read_date).count
+    elsif params[:period] == YEAR_READ_BOOK
+      @books_for_graph = @books.group_by_year(:read_date).count
     else
-      @books_number = @books.group_by_month(:read_date).count
+      @books_for_graph = @books.group_by_month(:read_date).count
     end
 
-    if params[:author_number] == "0"
+    # 著者数のランキング（デフォルトでは上位5名での表示）
+    if params[:author_number] == TEN_AUTHOR_NUMBER
       author_number = "10"
-    elsif params[:author_number] == "1"
+    elsif params[:author_number] == ALL_AUTHOR_NUMBER
       author_number = nil
     else
       author_number = "5"

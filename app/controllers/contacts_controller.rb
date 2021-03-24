@@ -2,7 +2,8 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
   end
-
+  
+  # お問い合わせ確認画面で内容が確定された後、セッションに保存された情報を保存する
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.valid?

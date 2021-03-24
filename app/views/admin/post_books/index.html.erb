@@ -27,7 +27,7 @@
             <h4><%= link_to post_book.title, admin_post_book_path(post_book), class: 'font-weight-bold post-book-title' %></h4>
               <p class="mt-3">著者: <%= post_book.post_book_author %>　題名: <%= post_book.post_book_title %></p>
               <div class="small mt-3">
-                <span class="border border-dark"><%= post_book.genre.name %></span>　<i class="fas fa-comments"></i>: <%= post_book.comments.count %>　<i class="fas fa-thumbs-up"></i>: <%= post_book.favorites.count %>
+                <span class="border border-dark"><%= post_book.genre.name %></span>　<i class="fas fa-comments"></i>: <%= post_book.comments.size %>　<i class="fas fa-thumbs-up"></i>: <%= post_book.favorites.size %>
               </div>
               <div class="small mt-3 d-flex justify-content-end">投稿日: <%= post_book.created_at.strftime('%Y/%m/%d') %></div>
           </td>

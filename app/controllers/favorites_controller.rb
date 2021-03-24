@@ -22,9 +22,8 @@ class FavoritesController < ApplicationController
     @title = "いいね一覧"
     @genres = Genre.all
     @url = search_favorites_path
-    favorites = Favorite.where(user_id: params[:user_id])
-    post_book_id = favorites.pluck(:post_book_id)
-    @post_books = PostBook.where(id: post_book_id)
+    post_book_id = Favorite.favorite_post_book(params[:user_id])
+    @post_books = PostBook.where(id: post_book_id).includes(:genre, :user, :comments, :favorites)
     @post_books = @post_books.page(params[:page]).reverse_order
   end
 
@@ -34,9 +33,8 @@ class FavoritesController < ApplicationController
     @genres = Genre.all
     @url = search_favorites_path
     @post_books = PostBook.search(params[:nil], params[:search], params[:genre_id], params[:post_from], params[:post_to])
-    favorites = Favorite.where(user_id: params[:user_id])
-    post_book_id = favorites.pluck(:post_book_id)
-    @post_books = @post_books.where(id: post_book_id)
+    post_book_id = Favorite.favorite_post_book(params[:user_id])
+    @post_books = @post_books.where(id: post_book_id).includes(:genre, :user, :comments, :favorites)
     @post_books = @post_books.page(params[:page]).reverse_order
   end
 end

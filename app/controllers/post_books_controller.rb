@@ -17,15 +17,18 @@ class PostBooksController < ApplicationController
     end
   end
 
+  USER_POST_BOOK = "0"
+
+  # book_sortが0の時、特定のユーザーの投稿一覧を表示する
   def index
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
     @title = "投稿一覧"
-    if params[:book_sort] == "0"
+    if params[:book_sort] == USER_POST_BOOK
       @post_books = PostBook.where(user_id: params[:user_id])
-      @post_books = @post_books.page(params[:page]).reverse_order
+      @post_books = @post_books.page(params[:page]).reverse_order.includes(:genre, :user, :comments, :favorites)
     else
-      @post_books = PostBook.page(params[:page]).reverse_order
+      @post_books = PostBook.page(params[:page]).reverse_order.includes(:genre, :user, :comments, :favorites)
     end
   end
 
@@ -34,7 +37,7 @@ class PostBooksController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @title = "投稿一覧"
     @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id], params[:post_from], params[:post_to])
-    @post_books = @post_books.page(params[:page]).reverse_order
+    @post_books = @post_books.page(params[:page]).reverse_order.includes(:genre, :user, :comments, :favorites)
   end
 
   def show

@@ -29,20 +29,20 @@
       <div class="row mt-2">
         <div class="col-6 col-md-3 col-lg-2 offset-1 offset-md-2 offset-lg-3 px-0">
           <ul class="list-group">
-            <li class="list-group-item border-0 px-0 py-1">◆ フォロー数:</li>
-            <li class="list-group-item border-0 px-0 py-1">◆ フォロワー数:</li>
-            <li class="list-group-item border-0 px-0 py-1">◆ 総投稿数:</li>
-            <li class="list-group-item border-0 px-0 py-1">◆ 総登録読書数:</li>
-            <li class="list-group-item border-0 px-0 py-1">◆ いいね投稿数:</li>
+            <li class="list-group-item border-0 px-0 py-1"><%= link_to "◆ フォロー数:", relationships_path(id: @user, relationship_order: 0), class: 'text-dark' %></li>
+            <li class="list-group-item border-0 px-0 py-1"><%= link_to "◆ フォロワー数:", relationships_path(id: @user, relationship_order: 1), class: 'text-dark' %></li>
+            <li class="list-group-item border-0 px-0 py-1"><%= link_to "◆ いいね投稿数:", favorites_path(user_id: @user.id), class: 'text-dark' %></li>
+            <li class="list-group-item border-0 px-0 py-1"><%= link_to "◆ 総投稿数:", post_books_path(user_id: @user, book_sort: 0), class: 'text-dark' %></li>
+            <li class="list-group-item border-0 px-0 py-1"><%= link_to "◆ 総登録読書数:", books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' %></li>
           </ul>
         </div>
         <div class="col-3 col-md-1 col-lg-1 px-0">
           <ul class="list-group text-center">
             <li class="list-group-item border-0 px-0 py-1"><%= link_to @user.follower.count, relationships_path(id: @user, relationship_order: 0), class: 'text-dark' %></li>
             <li class="list-group-item border-0 px-0 py-1"><%= link_to @user.followed.count, relationships_path(id: @user, relationship_order: 1), class: 'text-dark' %></li>
+            <li class="list-group-item border-0 px-0 py-1"><%= link_to @user.favorites.count, favorites_path(user_id: @user.id), class: 'text-dark' %></li>
             <li class="list-group-item border-0 px-0 py-1"><%= link_to @user.post_books.count, post_books_path(user_id: @user, book_sort: 0), class: 'text-dark' %></li>
             <li class="list-group-item border-0 px-0 py-1"><%= link_to @user.books.count, books_path(user_id: @user.id, book_sort: 0), class: 'text-dark' %></li>
-            <li class="list-group-item border-0 px-0 py-1"><%= link_to @user.favorites.count, favorites_path(user_id: @user.id), class: 'text-dark' %></li>
           </ul>
         </div>
         <div class="col-md-5 col-lg-5 offset-1 offset-md-0 mt-3 mt-md-0 ml-md-4 ml-lg-0 px-0">

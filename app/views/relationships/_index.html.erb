@@ -34,10 +34,10 @@
                 <p class="mb-0"><%= user.nickname %></p>
               <% end %>
             </td>
-            <td class="align-middle"><%= link_to user.post_books.count, post_books_path(user_id: user, book_sort: 0) %></td>
-            <td class="align-middle"><%= link_to user.books.count, books_path(user_id: user, book_sort: 0) %></td>
-            <td class="align-middle"><%= link_to user.follower.count, relationships_path(id: user, relationship_order: 0)%></td>
-            <td class="align-middle"><%= link_to user.followed.count, relationships_path(id: user, relationship_order: 1) %></td>
+            <td class="align-middle"><%= link_to user.post_books.size, post_books_path(user_id: user, book_sort: 0) %></td>
+            <td class="align-middle"><%= link_to user.books.size, books_path(user_id: user, book_sort: 0) %></td>
+            <td class="align-middle"><%= link_to user.follower.size, relationships_path(id: user, relationship_order: 0)%></td>
+            <td class="align-middle"><%= link_to user.followed.size, relationships_path(id: user, relationship_order: 1) %></td>
           </tr>
           <% end %>
         </tbody>

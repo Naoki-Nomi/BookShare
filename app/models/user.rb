@@ -20,17 +20,11 @@ class User < ApplicationRecord
   has_many :follower, class_name: "Relationship", foreign_key: 'follower_id', dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: 'followed_id', dependent: :destroy
 
-  has_many :following_user, through: :follower, source: :followed
-  has_many :follower_user, through: :followed, source: :follower
+  has_many :following_users, through: :follower, source: :followed
+  has_many :follower_users, through: :followed, source: :follower
 
   has_many :active_notifications, class_name: "Notification", foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: 'visited_id', dependent: :destroy
-
-  def self.guest
-    find_or_create_by!(nickname: 'ゲスト', email: 'guest@example.com') do |user|
-    user.password = SecureRandom.urlsafe_base64
-    end
-  end
 
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -41,9 +35,10 @@ class User < ApplicationRecord
   end
 
   def following?(user)
-    following_user.include?(user)
+    following_users.include?(user)
   end
 
+  # フォローの通知を作成
   def create_notification_follow(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
     if temp.blank?

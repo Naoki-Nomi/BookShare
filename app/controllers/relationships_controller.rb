@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     current_user.follow(params[:id])
     user = User.find(params[:id])
     user.create_notification_follow(current_user)
-    redirect_to user_path(params[:id])
+    redirect_to user_path(user)
   end
 
   def unfollow
@@ -13,14 +13,18 @@ class RelationshipsController < ApplicationController
     redirect_to user_path(params[:id])
   end
 
+  FOLLOW_INDEX = "0"
+  FOLLOWER_INDEX = "1"
+
+  # relationship_orderが0の時は、フォロー一覧、1の時はフォロワー一覧を表示する
   def index
-    if params[:relationship_order] == "0"
+    if params[:relationship_order] == FOLLOW_INDEX
       @user = User.find(params[:id])
-      @users = @user.following_user
+      @users = @user.following_users.includes(:post_books, :books, :following_users, :follower_users)
       @title = "フォロー"
-    elsif params[:relationship_order] == "1"
+    elsif params[:relationship_order] == FOLLOWER_INDEX
       @user = User.find(params[:id])
-      @users = @user.follower_user
+      @users = @user.follower_users.includes(:post_books, :books, :following_users, :follower_users)
       @title = "フォロワー"
     else
       redirect_to root_path
@@ -28,13 +32,13 @@ class RelationshipsController < ApplicationController
   end
 
   def search
-    if params[:relationship_order] == "0"
+    if params[:relationship_order] == FOLLOW_INDEX
       @user = User.find(params[:id])
-      @users = @user.following_user.where("nickname Like?", "%#{params[:nickname]}%")
+      @users = @user.following_users.where("nickname Like?", "%#{params[:nickname]}%").includes(:post_books, :books, :following_users, :follower_users)
       @title = "フォロー"
-    elsif params[:relationship_order] == "1"
+    elsif params[:relationship_order] == FOLLOWER_INDEX
       @user = User.find(params[:id])
-      @users = @user.follower_user.where("nickname Like?", "%#{params[:nickname]}%")
+      @users = @user.follower_users.where("nickname Like?", "%#{params[:nickname]}%").includes(:post_books, :books, :following_users, :follower_users)
       @title = "フォロワー"
     else
       redirect_to root_path
