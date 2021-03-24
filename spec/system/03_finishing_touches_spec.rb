@@ -9,7 +9,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
   let!(:other_genre) { create(:genre) }
   let!(:book) { create(:book, user: user, genre: genre) }
   let!(:other_book) { create(:book, user: other_user, genre: genre) }
-  let!(:post_book) { create(:post_book, user: user,  genre: genre) }
+  let!(:post_book) { create(:post_book, user: user, genre: genre) }
   let!(:other_post_book) { create(:post_book, user: other_user, genre: genre) }
 
   before do
@@ -153,6 +153,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
         before do
           fill_in 'comment[comment_content]', with: "コメントです"
         end
+
         it 'コメントが保存されている' do
           expect { click_button 'コメントを投稿する' }.to change(other_post_book.comments, :count).by(1)
         end
@@ -171,6 +172,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
           fill_in 'comment[comment_content]', with: ""
           click_button 'コメントを投稿する'
         end
+
         it 'コメント内容を入力してくださいのエラーが表示される' do
           expect(page).to have_content "コメント内容を入力してください"
         end
@@ -181,6 +183,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
           fill_in 'comment[comment_content]', with: "コメントです"
           click_button 'コメントを投稿する'
         end
+
         it 'コメントの削除ボタンが表示される' do
           comment = Comment.find_by(post_book_id: other_post_book)
           expect(page).to have_link '削除する', href: post_book_comment_path(other_post_book, comment)
@@ -190,7 +193,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
           expect(page).not_to have_content 'コメントです'
         end
         it 'コメントの削除ボタンを押すと、コメントが正しく削除されている' do
-          expect{ click_link '削除する' }.to change(other_post_book.comments, :count).by(-1)
+          expect { click_link '削除する' }.to change(other_post_book.comments, :count).by(-1)
         end
       end
     end
@@ -220,6 +223,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
         before do
           click_link 'いいねを取り消す'
         end
+
         it 'いいねのカウント数が-１されている' do
           expect(other_post_book.favorites.count).to eq 0
         end
@@ -236,7 +240,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
       click_link "#{other_user.nickname}さんの読書一覧を閲覧する"
     end
 
-     context '読書一覧画面の確認' do
+    context '読書一覧画面の確認' do
       it 'リンク先が正しいか' do
         expect(current_path).to eq '/books'
       end
@@ -304,10 +308,12 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
         expect(page).not_to have_content user.nickname
       end
     end
+
     context '他ユーザーの読書グラフの確認' do
       before do
         click_on "グラフで確認"
       end
+
       it 'リンク先の確認' do
         expect(current_path).to eq "/books/#{other_book.user.id}/detail"
       end
@@ -505,7 +511,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
         expect(page).to have_content "通知はありません"
       end
       it '実際に通知が削除されている' do
-        expect{ click_link "通知を空にする"}.to change { Notification.count }.by(-3)
+        expect { click_link "通知を空にする" }.to change(Notification, :count).by(-3)
       end
     end
   end

@@ -28,6 +28,7 @@ RSpec.describe 'PostBookモデルのテスト', type: :model do
         expect(post_book).to be_valid
       end
     end
+
     context 'contentカラム' do
       it '空欄の場合にバリデーションチェックされているか' do
         post_book.content = ''
@@ -42,6 +43,7 @@ RSpec.describe 'PostBookモデルのテスト', type: :model do
         expect(post_book).to be_valid
       end
     end
+
     context 'post_book_authorカラム' do
       it '空欄の場合にバリデーションチェックされているか' do
         post_book.post_book_author = ''
@@ -79,21 +81,25 @@ RSpec.describe 'PostBookモデルのテスト', type: :model do
         expect(PostBook.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context 'Genreモデルとの関係' do
       it 'N:1となっている' do
         expect(PostBook.reflect_on_association(:genre).macro).to eq :belongs_to
       end
     end
+
     context 'Commentモデルとの関係' do
       it '1:Nとなっている' do
         expect(PostBook.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
+
     context 'Favoriteモデルとの関係' do
       it '1:Nとなっている' do
         expect(PostBook.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
+
     context 'Notificationモデルとの関係' do
       it '1:Nとなっている' do
         expect(PostBook.reflect_on_association(:notifications).macro).to eq :has_many

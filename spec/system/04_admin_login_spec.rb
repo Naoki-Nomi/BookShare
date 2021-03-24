@@ -10,10 +10,10 @@ describe '[STEP4] 管理者画面のテスト' do
   let!(:other_genre) { create(:genre) }
   let!(:book) { create(:book, user: user, genre: genre) }
   let!(:other_book) { create(:book, user: other_user, genre: genre) }
-  let!(:post_book) { create(:post_book, user: user,  genre: genre) }
+  let!(:post_book) { create(:post_book, user: user, genre: genre) }
   let!(:other_post_book) { create(:post_book, user: other_user, genre: genre) }
 
-    before do
+  before do
     visit new_admin_session_path
     fill_in 'admin[email]', with: admin.email
     fill_in 'admin[password]', with: admin.password
@@ -21,7 +21,6 @@ describe '[STEP4] 管理者画面のテスト' do
   end
 
   describe 'ヘッダーの確認' do
-
     it 'ジャンル一覧のリンクが表示されているか' do
       expect(page).to have_link "", href: admin_genres_path
     end
@@ -44,7 +43,6 @@ describe '[STEP4] 管理者画面のテスト' do
   end
 
   describe '会員一覧画面のテスト' do
-
     context '会員一覧画面内容の確認' do
       it 'adminのログイン機能テスト' do
         expect(current_path).to eq '/admin'
@@ -61,7 +59,7 @@ describe '[STEP4] 管理者画面のテスト' do
         expect(page).to have_content user.created_at.strftime('%Y/%m/%d')
         expect(page).to have_content other_user.email
       end
-      it '会員の登録日が記載されているか' do
+      it '会員ステータスが表示されているか' do
         expect(page).to have_content user.is_deleted
         expect(page).to have_content other_user.is_deleted
       end
@@ -119,7 +117,7 @@ describe '[STEP4] 管理者画面のテスト' do
         expect(page).to have_content "テスト"
         expect(page).not_to have_content "サンプル"
       end
-      it 'メールアドレスで検索' do
+      it '会員ステータスで検索' do
         select '退会済み'
         click_button "検索"
         expect(page).to have_content "テスト"
@@ -265,16 +263,16 @@ describe '[STEP4] 管理者画面のテスト' do
       let!(:post_book) { create(:post_book, post_book_author: "夏目漱石", post_book_title: "こころ", genre_id: 1, title: "大人になれなかった先生", content: "面白いです", user_id: 1) }
 
       context '検索フォームの確認' do
-        it 'フォームの確認：検索ワード' do
+        it '検索ワード' do
           expect(page).to have_field 'q[title_or_post_book_author_or_post_book_title_cont_any]'
         end
-        it 'フォームの確認：ジャンル' do
+        it 'ジャンル' do
           expect(page).to have_field 'q[genre_id_eq]'
         end
-        it 'フォームの確認：日付' do
+        it '日付(From)' do
           expect(page).to have_field 'q[created_at_gteq]'
         end
-        it 'フォームの確認：日付' do
+        it '日付(To)' do
           expect(page).to have_field 'q[created_at_lteq_end_of_day]'
         end
         it '検索ボタンが表示されているか' do
@@ -398,6 +396,7 @@ describe '[STEP4] 管理者画面のテスト' do
 
   describe 'コメント機能の確認' do
     let!(:comment) { create(:comment, user: other_user, post_book: post_book, comment_content: "コメントです") }
+    
     before do
       visit admin_post_book_path(post_book)
     end
@@ -416,7 +415,7 @@ describe '[STEP4] 管理者画面のテスト' do
     end
     it 'コメントの削除ボタンを押すと、コメントが正しく削除されている' do
       delete_link = find_all('a')[8]
-      expect{ delete_link.click }.to change(post_book.comments, :count).by(-1)
+      expect { delete_link.click }.to change(post_book.comments, :count).by(-1)
     end
   end
 

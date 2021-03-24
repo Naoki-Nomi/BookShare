@@ -9,9 +9,8 @@ describe '[STEP2] ユーザログイン後のテスト' do
   let!(:other_genre) { create(:genre) }
   let!(:book) { create(:book, user: user, genre: genre) }
   let!(:other_book) { create(:book, user: other_user, genre: genre) }
-  let!(:post_book) { create(:post_book, user: user,  genre: genre) }
+  let!(:post_book) { create(:post_book, user: user, genre: genre) }
   let!(:other_post_book) { create(:post_book, user: other_user, genre: genre) }
-
 
   before do
     visit new_user_session_path
@@ -112,8 +111,8 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
   describe 'プロフィール編集機能のテスト' do
     before do
-        link = find_all('a')[17]
-        link.click
+      link = find_all('a')[17]
+      link.click
     end
 
     context 'プロフィール編集フォームの確認' do
@@ -151,13 +150,13 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
 
       it 'ニックネームが正しく更新されている' do
-        expect(user.reload.nickname).to_not eq @user_old_nickname
+        expect(user.reload.nickname).not_to eq @user_old_nickname
       end
       it 'メールアドレスが正しく更新されている' do
-        expect(user.reload.email).to_not eq @user_old_email
+        expect(user.reload.email).not_to eq @user_old_email
       end
       it '自己紹介が正しく更新されている' do
-        expect(user.reload.introduction).to_not eq nil
+        expect(user.reload.introduction).not_to eq nil
       end
       it 'リダイレクト先が、自分の詳細画面になっている' do
         expect(current_path).to eq "/users/#{user.id}"
@@ -333,16 +332,16 @@ describe '[STEP2] ユーザログイン後のテスト' do
       let!(:post_book) { create(:post_book, post_book_author: "夏目漱石", post_book_title: "こころ", genre_id: 1, title: "大人になれなかった先生", content: "面白いです", user_id: 1) }
 
       context '検索フォームの確認' do
-        it 'フォームの確認：検索ワード' do
+        it '検索ワード' do
           expect(page).to have_field 'search'
         end
-        it 'フォームの確認：ジャンル' do
+        it 'ジャンル' do
           expect(page).to have_field 'genre_id'
         end
-        it 'フォームの確認：日付' do
+        it '日付(from)' do
           expect(page).to have_field 'post_from'
         end
-        it 'フォームの確認：日付' do
+        it '日付(to)' do
           expect(page).to have_field 'post_to'
         end
         it '検索ボタンが表示されているか' do
@@ -579,26 +578,27 @@ describe '[STEP2] ユーザログイン後のテスト' do
     before do
       click_link "読書記録"
     end
+
     context "読書記録フォームの確認" do
       it 'urlの確認' do
         expect(current_path).to eq '/books/new'
       end
-      it 'フォームの確認：著者' do
+      it '著者' do
         expect(page).to have_field 'book[author]'
       end
-      it 'フォームの確認：題名' do
+      it '題名' do
         expect(page).to have_field 'book[book_title]'
       end
-      it 'フォームの確認：ジャンル' do
+      it 'ジャンル' do
         expect(page).to have_field 'book[genre_id]'
       end
-      it 'フォームの確認：読み終わった日付' do
+      it '読み終わった日付' do
         expect(page).to have_field 'book[read_date]'
       end
-      it 'フォームの確認：登録読書のメモ' do
+      it '登録読書のメモ' do
         expect(page).to have_field 'book[note]'
       end
-      it 'フォームの確認：投稿するボタン' do
+      it '投稿するボタン' do
         expect(page).to have_button '登録'
       end
     end
@@ -677,16 +677,16 @@ describe '[STEP2] ユーザログイン後のテスト' do
       let!(:book) { create(:book, author: "夏目漱石", book_title: "こころ", genre_id: 1, note: "面白いです", read_date: "2021-02-01", user_id: 1) }
 
       context '検索フォームの確認' do
-        it 'フォームの確認：検索ワード' do
+        it '検索ワード' do
           expect(page).to have_field 'search'
         end
-        it 'フォームの確認：ジャンル' do
+        it 'ジャンル' do
           expect(page).to have_field 'genre_id'
         end
-        it 'フォームの確認：検索ワード' do
+        it '日付(From)' do
           expect(page).to have_field 'read_from'
         end
-        it 'フォームの確認：検索ワード' do
+        it '日付(To)' do
           expect(page).to have_field 'read_to'
         end
         it '検索ボタンが表示されているか' do
@@ -970,7 +970,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
       context 'お問い合わせ機能のテスト' do
         it 'お問い合わせ内容が正しく保存されている' do
-          expect{ click_link "内容を確定する" }.to change{ Contact.count }.by(1)
+          expect { click_link "内容を確定する" }.to change(Contact, :count).by(1)
         end
         it 'お問い合わせ投稿後、サンクス画面にリダイレクトされる' do
           click_link "内容を確定する"

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
   devise_for :admin, controllers: {
-    sessions: 'admin/admins/sessions'
+    sessions: 'admin/admins/sessions',
   }
 
   namespace :admin do
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
 
   post '/homes/guest_sign_in', to: 'homes#new_guest'

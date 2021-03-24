@@ -26,12 +26,14 @@ RSpec.describe 'Contactモデルのテスト', type: :model do
         expect(contact).to be_valid
       end
     end
+
     context 'emailカラム' do
       it '空欄の場合にバリデーションチェックされているか' do
         contact.email = ''
         expect(contact).to be_invalid
       end
     end
+
     context 'contentカラム' do
       it '空欄の場合にバリデーションチェックされているか' do
         contact.content = ''

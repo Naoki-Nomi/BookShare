@@ -24,6 +24,7 @@ RSpec.describe 'Genreモデルのテスト', type: :model do
         expect(Genre.reflect_on_association(:books).macro).to eq :has_many
       end
     end
+
     context 'PostBookモデルとの関係' do
       it '1:Nとなっている' do
         expect(Genre.reflect_on_association(:post_books).macro).to eq :has_many

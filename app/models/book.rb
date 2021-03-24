@@ -6,7 +6,7 @@ class Book < ApplicationRecord
   validates :book_title, presence: true, length: { maximum: 30 }
   validates :read_date, presence: true
   validates :note, length: { maximum: 1200 }
-  
+
   # 検索時の処理（ユーザーIDは特定のユーザーの読書に限定する際に使用）
   def self.search(user_id, search, genre_id, from, to)
     book = Book

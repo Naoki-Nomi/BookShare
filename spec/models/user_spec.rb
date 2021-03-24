@@ -40,7 +40,6 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
     end
 
-
     context '自己紹介カラム' do
       it '400文字以内であること: 401文字は×' do
         user.introduction = Faker::Lorem.characters(number: 401)
@@ -59,16 +58,19 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:books).macro).to eq :has_many
       end
     end
+
     context 'PostBookモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:post_books).macro).to eq :has_many
       end
     end
+
     context 'Commentモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
+
     context 'Favoriteモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:favorites).macro).to eq :has_many

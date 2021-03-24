@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe '[STEP1] ユーザーログイン前のテスト'do
+describe '[STEP1] ユーザーログイン前のテスト' do
   describe 'トップ画面のテスト' do
     before do
       visit root_path
@@ -55,7 +55,6 @@ describe '[STEP1] ユーザーログイン前のテスト'do
         expect(page).to have_link "", href: new_user_session_path
       end
     end
-
 
     context 'リンク内容を確認' do
       subject { current_path }
@@ -123,7 +122,7 @@ describe '[STEP1] ユーザーログイン前のテスト'do
   end
 
   describe 'ユーザーログインのテスト' do
-      let(:user) { create(:user) }
+    let(:user) { create(:user) }
 
     before do
       visit new_user_session_path
