@@ -37,6 +37,10 @@ describe '[STEP4] 管理者画面のテスト' do
     it 'ログアウトのリンクが表示されているか' do
       expect(page).to have_link "", href: destroy_admin_session_path
     end
+    it 'ログアウト後、ログイン画面に遷移しているか' do
+      click_link "ログアウト"
+      expect(current_path).to eq "/admin/sign_in"
+    end
   end
 
   describe '会員一覧画面のテスト' do

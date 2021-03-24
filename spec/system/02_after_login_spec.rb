@@ -67,43 +67,43 @@ describe '[STEP2] ユーザログイン後のテスト' do
         link.click
         is_expected.to eq '/relationships'
       end
-      it '9番目のリンクをクリックすると、自分の投稿一覧に遷移する' do
+      it '9番目のリンクをクリックすると、いいねした投稿一覧に遷移する' do
         link = find_all('a')[9]
-        link.click
-        is_expected.to eq '/post_books'
-      end
-      it '10番目のリンクをクリックすると、自分の読書記録一覧に遷移する' do
-        link = find_all('a')[10]
-        link.click
-        is_expected.to eq "/books"
-      end
-      it '11番目のリンクをクリックすると、いいねした投稿一覧に遷移する' do
-        link = find_all('a')[11]
         link.click
         is_expected.to eq '/favorites'
       end
-      it '12番目のリンクをクリックすると、ユーザー編集画面に遷移する' do
-        link = find_all('a')[12]
-        link.click
-        is_expected.to eq "/users/#{user.id}/edit"
-      end
-      it '13番目のリンクをクリックすると、自分の投稿一覧に遷移する' do
-        link = find_all('a')[13]
+      it '10番目のリンクをクリックすると、自分の投稿一覧に遷移する' do
+        link = find_all('a')[10]
         link.click
         is_expected.to eq '/post_books'
       end
-      it '14番目のリンクをクリックすると、自分の読書記録一覧に遷移する' do
-        link = find_all('a')[14]
+      it '11番目のリンクをクリックすると、自分の読書記録一覧に遷移する' do
+        link = find_all('a')[11]
         link.click
         is_expected.to eq "/books"
       end
-      it '15番目のリンクをクリックすると、通知一覧に遷移する' do
-        link = find_all('a')[15]
+      it '17番目のリンクをクリックすると、ユーザー編集画面に遷移する' do
+        link = find_all('a')[17]
+        link.click
+        is_expected.to eq "/users/#{user.id}/edit"
+      end
+      it '18番目のリンクをクリックすると、自分の投稿一覧に遷移する' do
+        link = find_all('a')[18]
+        link.click
+        is_expected.to eq '/post_books'
+      end
+      it '19番目のリンクをクリックすると、自分の読書記録一覧に遷移する' do
+        link = find_all('a')[19]
+        link.click
+        is_expected.to eq "/books"
+      end
+      it '20番目のリンクをクリックすると、通知一覧に遷移する' do
+        link = find_all('a')[20]
         link.click
         is_expected.to eq '/notifications'
       end
-      it '16番目のリンクをクリックすると、退会確認画面に遷移する' do
-        link = find_all('a')[16]
+      it '21番目のリンクをクリックすると、退会確認画面に遷移する' do
+        link = find_all('a')[21]
         link.click
         is_expected.to eq "/users/page/#{user.id}/confirm"
       end
@@ -112,7 +112,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
   describe 'プロフィール編集機能のテスト' do
     before do
-        link = find_all('a')[12]
+        link = find_all('a')[17]
         link.click
     end
 
@@ -167,7 +167,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
   describe '退会機能のテスト' do
     before do
-      link = find_all('a')[16]
+      link = find_all('a')[21]
       link.click
     end
 

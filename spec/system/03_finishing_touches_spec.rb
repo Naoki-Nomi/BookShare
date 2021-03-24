@@ -209,7 +209,7 @@ describe '[STEP3] 仕上げのテスト（他ユーザーの画面の確認）' 
         end
         it 'いいねした投稿をマイページから閲覧することができる' do
           visit user_path(user.id)
-          favorite_link = find_all('a')[11]
+          favorite_link = find_all('a')[9]
           favorite_link.click
           expect(page).to have_content other_post_book.title
           expect(current_path).to eq "/favorites"
