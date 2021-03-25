@@ -34,4 +34,8 @@ https://docs.google.com/spreadsheets/d/1JMQ4Xw_GdHNrrciTc_-qE91VisPwkfBOBiDIaPZ2
 - 仮想環境：Vagrant,VirtualBox
 
 ## 使用素材
-- 検討中。フリー素材を使用した、サイトのリンク先を明記。
+- フリー素材を下記のサイトより活用。
+https://www.pakutaso.com/
+https://girlysozai.com/
+https://www.photo-ac.com/
+https://www.ac-illust.com/
