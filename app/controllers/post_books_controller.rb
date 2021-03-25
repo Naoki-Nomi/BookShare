@@ -23,23 +23,17 @@ class PostBooksController < ApplicationController
   def index
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
-    @title = "投稿一覧"
-    @url = search_post_books_path
     if params[:book_sort] == USER_POST_BOOK
-      @post_books = PostBook.where(user_id: params[:user_id])
-      @post_books = @post_books.page(params[:page]).reverse_order.includes(:genre, :user, :comments, :favorites)
+      @post_books = PostBook.user_post_book_index(params[:user_id], params[:page])
     else
-      @post_books = PostBook.page(params[:page]).reverse_order.includes(:genre, :user, :comments, :favorites)
+      @post_books = PostBook.post_book_index(params[:page])
     end
   end
 
   def search
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
-    @title = "投稿一覧"
-    @url = search_post_books_path
-    @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id], params[:post_from], params[:post_to])
-    @post_books = @post_books.page(params[:page]).reverse_order.includes(:genre, :user, :comments, :favorites)
+    @post_books = PostBook.search(params[:user_id], params[:search], params[:genre_id], params[:post_from], params[:post_to], params[:page])
   end
 
   def show

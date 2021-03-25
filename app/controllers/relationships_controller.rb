@@ -20,11 +20,11 @@ class RelationshipsController < ApplicationController
   def index
     if params[:relationship_order] == FOLLOW_INDEX
       @user = User.find(params[:id])
-      @users = @user.following_users.includes(:post_books, :books, :following_users, :follower_users)
+      @users = @user.get_following_users(params[:page])
       @title = "フォロー"
     elsif params[:relationship_order] == FOLLOWER_INDEX
       @user = User.find(params[:id])
-      @users = @user.follower_users.includes(:post_books, :books, :following_users, :follower_users)
+      @users = @user.get_follower_users(params[:page])
       @title = "フォロワー"
     else
       redirect_to root_path
@@ -34,11 +34,11 @@ class RelationshipsController < ApplicationController
   def search
     if params[:relationship_order] == FOLLOW_INDEX
       @user = User.find(params[:id])
-      @users = @user.following_users.where("nickname Like?", "%#{params[:nickname]}%").includes(:post_books, :books, :following_users, :follower_users)
+      @users = @user.get_search_following_users(params[:nickname], params[:page])
       @title = "フォロー"
     elsif params[:relationship_order] == FOLLOWER_INDEX
       @user = User.find(params[:id])
-      @users = @user.follower_users.where("nickname Like?", "%#{params[:nickname]}%").includes(:post_books, :books, :following_users, :follower_users)
+      @users = @user.get_search_follower_users(params[:nickname], params[:page])
       @title = "フォロワー"
     else
       redirect_to root_path

@@ -49,12 +49,20 @@ class PostBook < ApplicationRecord
   end
 
   # 検索時の処理（ユーザーIDはユーザーが投稿した投稿に限定する際に使用）
-  def self.search(user_id, search, genre_id, from, to)
+  def self.search(user_id, search, genre_id, from, to, page)
     post_book = PostBook
     post_book = post_book.where(user_id: user_id) if user_id.present?
     post_book = post_book.where("title LIKE? OR post_book_author LIKE? OR post_book_title LIKE?", "%#{search}%", "%#{search}%", "%#{search}%") if search.present?
     post_book = post_book.where(genre_id: genre_id) if genre_id.present?
     post_book = post_book.where(created_at: from..to) if from.present?
-    post_book
+    post_book.page(page).reverse_order.includes(:genre, :user, :comments, :favorites)
+  end
+
+  def self.user_post_book_index(user_id, page)
+    PostBook.where(user_id: user_id).page(page).reverse_order.includes(:genre, :user, :comments, :favorites)
+  end
+
+  def self.post_book_index(page)
+    PostBook.page(page).reverse_order.includes(:genre, :user, :comments, :favorites)
   end
 end

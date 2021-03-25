@@ -23,19 +23,16 @@ class BooksController < ApplicationController
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
     if params[:book_sort] == OTHER_USER_BOOK
-      @books = Book.where(user_id: params[:user_id])
-      @books = @books.order(read_date: "DESC").page(params[:page]).includes(:genre)
+      @books = Book.book_index(params[:user_id], params[:page])
     else
-      @books = Book.where(user_id: current_user.id)
-      @books = @books.order(read_date: "DESC").page(params[:page]).includes(:genre)
+      @books = Book.book_index(current_user.id, params[:page])
     end
   end
 
   def search
     @genres = Genre.all
     @user = User.find_by(id: params[:user_id])
-    @books = Book.search(params[:user_id], params[:search], params[:genre_id], params[:read_from], params[:read_to])
-    @books = @books.order(read_date: "DESC").page(params[:page]).includes(:genre)
+    @books = Book.search(params[:user_id], params[:search], params[:genre_id], params[:read_from], params[:read_to]).order(read_date: "DESC").page(params[:page]).includes(:genre)
   end
 
   def show
@@ -78,15 +75,15 @@ class BooksController < ApplicationController
     @user = User.find_by(id: params[:user_id])
 
     # ジャンルのグラフ用にジャンルごとの件数をハッシュ化
-    @genre_for_graph = @books.joins(:genre).group("genres.name").count
+    @genre_for_graph = Book.genre_for_graph(params[:user_id])
 
     # 読書数の経時変化（デフォルトでは月毎での表示）
     if params[:period] == WEEK_READ_BOOK
-      @books_for_graph = @books.group_by_week(:read_date).count
+      @books_for_graph = Book.week_read_book(params[:user_id])
     elsif params[:period] == YEAR_READ_BOOK
-      @books_for_graph = @books.group_by_year(:read_date).count
+      @books_for_graph = Book.year_read_book(params[:user_id])
     else
-      @books_for_graph = @books.group_by_month(:read_date).count
+      @books_for_graph = Book.month_read_book(params[:user_id])
     end
 
     # 著者数のランキング（デフォルトでは上位5名での表示）
@@ -97,7 +94,7 @@ class BooksController < ApplicationController
     else
       author_number = "5"
     end
-    @author_for_graph = @books.group(:author).order('count_all DESC').limit(author_number).count
+    @author_for_graph = Book.author_number(params[:user_id], author_number)
   end
 
   private

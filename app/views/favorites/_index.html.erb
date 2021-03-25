@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-11 col-sm-10 mx-auto">
       <h4 class="col-7 col-md-3 col-lg-2 ml-0 ml-md-2 ml-lg-5 page-title">投稿一覧</h4>
-      <%= form_with url: search_post_books_path, method: :get, local: true do |f| %>
+      <%= form_with url: search_favorites_path, method: :get, local: true do |f| %>
       <div class="row form-group m-0 mb-1 mt-3">
         <div class="col-7 col-md-5 col-lg-4 p-0 offset-md-3 offset-lg-3"><%= f.text_field :search, placeholder: 'キーワードを入力', class: 'form-control form-control-sm' %></div>
         <div class="col-4 col-md-2 col-lg-2 p-0 ml-2"><%= f.select :genre_id, options_from_collection_for_select(genres, :id, :name), { prompt: "ジャンル" }, { class: 'form-control form-control-sm' }%></div>
@@ -16,7 +16,7 @@
       <%= f.hidden_field :user_id, :value => params[:user_id] %>
       <% end %>
       <% unless params[:user_id] == "" || params[:user_id] == nil %>
-        <%= render 'books/user', user: @user, title: "投稿一覧" %>
+        <%= render 'books/user', user: @user, title: "いいね一覧" %>
       <% end %>
       <% if post_books.blank? %>
         <p class="text-center mt-5">該当するデータはありません</p>

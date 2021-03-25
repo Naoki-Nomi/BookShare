@@ -49,4 +49,22 @@ class User < ApplicationRecord
       notification.save
     end
   end
+
+  def get_following_users(page)
+    following_users.page(page).includes(:post_books, :books, :following_users, :follower_users)
+  end
+
+  def get_follower_users(page)
+    follower_users.page(page).includes(:post_books, :books, :following_users, :follower_users)
+  end
+
+  # フォロー中のユーザーをニックネームから検索
+  def get_search_following_users(nickname, page)
+    following_users.where("nickname Like?", "%#{nickname}%").page(page).includes(:post_books, :books, :following_users, :follower_users)
+  end
+
+  # フォロワーのユーザーをニックネームから検索
+  def get_search_follower_users(nickname, page)
+    follower_users.where("nickname Like?", "%#{nickname}%").page(page).includes(:post_books, :books, :following_users, :follower_users)
+  end
 end
