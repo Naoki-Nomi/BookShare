@@ -26,7 +26,7 @@ class FavoritesController < ApplicationController
   def search
     @user = User.find_by(id: params[:user_id])
     @genres = Genre.all
-    @post_books = PostBook.search(params[:nil], params[:search], params[:genre_id], params[:post_from], params[:post_to])
-    @post_books = Favorite.after_search_favorite_post_book(params[:user_id], @post_books, params[:page])
+    @post_books = PostBook.search(params[:nil], params[:search], params[:genre_id], params[:post_from], params[:post_to], params[:page])
+    @post_books = Favorite.after_search_favorite_post_book(params[:user_id], @post_books)
   end
 end

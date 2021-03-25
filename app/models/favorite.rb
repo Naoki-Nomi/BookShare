@@ -7,8 +7,8 @@ class Favorite < ApplicationRecord
     PostBook.where(id: post_book_id).page(page).reverse_order.includes(:genre, :user, :comments, :favorites)
   end
 
-  def self.after_search_favorite_post_book(user_id, post_books, page)
+  def self.after_search_favorite_post_book(user_id, post_books)
     post_book_id = Favorite.where(user_id: user_id).pluck(:post_book_id)
-    post_books.where(id: post_book_id).page(page).reverse_order.includes(:genre, :user, :comments, :favorites)
+    post_books.where(id: post_book_id)
   end
 end
