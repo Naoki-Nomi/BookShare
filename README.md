@@ -35,7 +35,7 @@ https://docs.google.com/spreadsheets/d/1JMQ4Xw_GdHNrrciTc_-qE91VisPwkfBOBiDIaPZ2
 
 ## 使用素材
 - フリー素材を下記のサイトより活用。
-https://www.pakutaso.com/
-https://girlysozai.com/
-https://www.photo-ac.com/
-https://www.ac-illust.com/
+  - https://www.pakutaso.com/
+  - https://girlysozai.com/
+  - https://www.photo-ac.com/
+  - https://www.ac-illust.com/
