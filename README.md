@@ -27,11 +27,11 @@ https://docs.google.com/spreadsheets/d/1JMQ4Xw_GdHNrrciTc_-qE91VisPwkfBOBiDIaPZ2
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux 2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
+- IDE：Cloud9
 
 ## 使用素材
 - フリー素材を下記のサイトより活用。
