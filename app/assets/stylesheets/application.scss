@@ -13,12 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import "summernote-bs4";
-
 
 * {
   font-family: "メイリオ",meiryo,Arial,Helvetica;
@@ -127,7 +125,7 @@ li {
 }
 
 .top-outline-sentence {
-  background:linear-gradient(transparent 80%, #94c674 0%);
+  background: linear-gradient(transparent 80%, #94c674 0%);
 }
 
 #back {
@@ -135,6 +133,7 @@ li {
   right: 20px;
   bottom: 20px;
 }
+
 #back img {
   width: 50px;
   opacity: 0.3;
@@ -149,7 +148,7 @@ li {
 }
 
 .instruction_title {
-  background:linear-gradient(transparent 80%, #94c674 0%);
+  background: linear-gradient(transparent 80%, #94c674 0%);
 }
 
 .mypage-introduction {
@@ -249,7 +248,7 @@ li {
   background-color: #ffffff;
 }
 
-@media screen and (max-width : 768px){
+@media screen and (max-width : 768px) {
 	.top_quote {
 	  font-size: 12px;
     position: absolute;
@@ -262,7 +261,7 @@ li {
   }
 }
 
-@media screen and (max-width : 480px){
+@media screen and (max-width : 480px) {
 	.display-1 {
 		font-size: 60px;
 	}
@@ -369,14 +368,14 @@ li {
     font-size: 5px;
     text-align: left;
   }
-
 }
 
-@media screen and (max-width : 375px){
+@media screen and (max-width : 375px) {
 	.top-merit-pic {
 	  width: 240px;
 	  height: 200px;
 	}
+
 	.top-how-pic {
 	  width: 240px;
 	  height: 160px;
