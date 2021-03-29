@@ -1,19 +1,17 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update, :confirm, :quit]
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(@user), notice: '編集できません'
     end
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.email == "guest@example.com"
       redirect_to user_path(@user), notice: 'ゲストユーザーは編集できません'
     elsif @user.update(user_params)
@@ -24,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def confirm
-    @user = User.find(params[:id])
     if @user.id != current_user.id
       redirect_to user_path(@user), notice: '編集できません'
     elsif @user.email == "guest@example.com"
@@ -33,8 +30,7 @@ class UsersController < ApplicationController
   end
 
   def quit
-    user = User.find(params[:id])
-    user.update_attributes(is_deleted: true)
+    @user.update_attributes(is_deleted: true)
     reset_session
     redirect_to root_path
   end
@@ -43,5 +39,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :profile_image, :introduction, :email)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
